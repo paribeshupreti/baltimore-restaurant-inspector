@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "FAIDLEY'S EDP SEAFOOD INC STALL 21",
+    "address": "112 N EUTAW ST",
+    "zipcode": "21201",
+    "city": "Baltimore",
+    "state": "MD",
+    "star_rating": null,
+    "last_inspection": "12/22/2025",
+    "violations": []
+  },
+  {
+    "id": 2,
+    "name": "THE FOOD MARKET",
+    "address": "1017 W 36TH ST",
+    "zipcode": "21211",
+    "city": "Baltimore",
+    "state": "MD",
+    "star_rating": null,
+    "last_inspection": "12/03/2025",
+    "violations": []
+  },
+  {
+    "id": 3,
+    "name": "EKIBEN",
+    "address": "801 E FORT AVE",
+    "zipcode": "21230",
+    "city": "Baltimore",
+    "state": "MD",
+    "star_rating": null,
+    "last_inspection": "12/15/2025",
+    "violations": []
+  }
+]

@@ -1,0 +1,464 @@
+[
+  {
+    "id": 1,
+    "name": "CLAVEL",
+    "address": "225-227 W 23RD ST",
+    "zipcode": "21211",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "11/04/2025",
+    "violations": [
+      {
+        "code": 30,
+        "description": "The person-in-charge shall ensure that equipment and utensils are designed, constructed and maintained to accomplish the intended and required functions [10.15.03.15A(3)(a)]. Freezer not maintained, ice build-up inside freezer OBSERVED ICE BUILDUP IN CHEST FREEZER IN BACK",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "THAMES STREET OYSTER HOUSE",
+    "address": "1728 THAMES ST",
+    "zipcode": "21231",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "07/11/2025",
+    "violations": [
+      {
+        "code": 13,
+        "description": "The person-in-charge shall ensure that food temperature measuring devices are used to monitor the temperature of potentially hazardous foods; graduated and accurate within plus or minus 2\u00b0F; calibrated annually or more frequently; and cleaned and sanitized between uses indifferent foods to prevent cross-contamination [10.15.03.09A]. Thermometer provided but not used THERMOMETERS ARE PLACED IN UNITS IN FACILITY BUT ARE NOT BEING USED TO CHECK TEMPERATURES AS PART",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 33,
+        "description": "(1) The person-in-charge shall ensure that the HACCP plan includes the identification of each CCP; critical limits for each CCP; monitoring procedures at each CCP; corrective action that will be taken if there is a loss of control at a CCP due to employee error, equipment malfunction, power failure, or any other factor that causes loss of control at a CCP; verification procedures that will ensure proper monitoring of each CCP; written procedures for employee training in HACCP plan procedures; and a list of the food service equipment that will be used at each CCP [10.15.03.33E]. HACCP plan does not include written procedures for employee training in HACCP plan procedures HACCP PLAN ON FILE DOES NOT INCLUDE STATEMENT IN HOW EMPLOYEES ARE HACCP TRAINED. SEND TRAINING Site: [] (2) The person-in-charge of a high or moderate priority food service facility shall ensure that an employee involved in food preparation is trained in the HACCP procedures [10.15.03.34B]. All employees involved in food preparation has not been trained in the HACCP procedures EMPLOYEES ARE NOT ROUTINELY TAKING TEMPERATURES UPON DELIVERY OF FOOD ITEMS AND EVERY 2 HOURS",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 43,
+        "description": "Complaint Details : RECEIVED REPORTED CASE OF A VIBRIO RELATED ILLNESS PERTAINING TO OYSTERS CONSUMED FROM THIS FACILITY. INDIVIDUAL ATE AT THIS FACILITY ON 6/21 AND",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "THE CHARMERY",
+    "address": "1700 W 41ST ST",
+    "zipcode": "21211",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "12/08/2025",
+    "violations": [
+      {
+        "code": 46,
+        "description": "The following observations are being noted for the record but are not violations of the Baltimore City Health Code or the Code of Maryland Regulations: STOPPED BY THIS LOCATION TO INFORM OWNER A TEMPORARY PERMIT IS REQUIRED FOR THE POP UP SANTA BAR ACROSS THE STREET. AS A REMINDER, UNLICENSED FOOD FACILITIES ARE SUBJECT TO CLOSURE BY",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "THE HELMAND RESTAURANT",
+    "address": "806 N CHARLES ST",
+    "zipcode": "21201",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "11/13/2025",
+    "violations": [
+      {
+        "code": 20,
+        "description": "The person-in-charge shall ensure that a bactericide, cleaning compound or other compound intended for use on food-contact surfaces is not used or stored in a way that will leave a toxic residue on food-contact surfaces [10.15.03.13D]. Sanitizing solution is too strong OBSERVED QUAT SANITIZER TOO STRONG IN SANITIZER BUCKETS. ENSURE SANITIZER IS TESTED BEFORE USE AND IS",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 21,
+        "description": "The person-in-charge shall ensure that wiping cloths are rinsed and stored in one of the approved sanitizing solutions when used wet for wiping spills from the surfaces of equipment [10.15.03.16N(3)]. Soak all wiping cloths in a sanitization solution in between use. Wiping cloths are not being stored in the provided sanitization solution OBSERVED WIPING CLOTHS LAYING OUT ON PREP TABLE.",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 22,
+        "description": "(1) The person-in-charge shall ensure that effective control measures are used to eliminate rodents, flies, roaches, and other vermin from the building [10.15.03.20E(1)]. Evidence of rodent infestation OBSERVE RAT DROPPINGS UNDER THE BAR SINK. CLEAN ALL DROPPINGS UP DAILY, SANITIZE ALL AREAS WHERE DROPPINGS ARE FOUND. CONTACT PEST CONTROL SERVICE TO TARGET ALL PEST ISSUES. LAST SERVICE WAS CONDUCTED ON 10/28/2025. PEST CONTROL SERVICES (2) The person-in-charge shall ensure that openings into the building are effectively protected against the entrance of insects and rodents [10.15.03.20E(3)(a)]. Provide and use tight fitting and self-closing doors to the exterior to protect against vermin Door to exterior is not tight fitting OBSERVED SMALL GAP",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 23,
+        "description": "\u00fcThe person-in-charge shall ensure that single service articles are handled and dispensed in a manner that prevents contamination of surfaces that come into contact with food or the mouth of the user [10.15.03.17H(2)]. Store all single service containers upside down during display and dispensing. Single-service containers stored with open end up OBSERVED SINGLE SERVICE CONTAINERS",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "RED EMMA'S BOOKSTORE COFFEEHOUSE",
+    "address": "3128 GREENMOUNT AVE",
+    "zipcode": "21218",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "12/02/2025",
+    "violations": [
+      {
+        "code": 21,
+        "description": "\u00fcThe person-in-charge shall ensure that wiping cloths are rinsed and stored in one of the approved sanitizing solutions when used wet for wiping spills from the surfaces of equipment [10.15.03.16N(3)]. Soak all wiping cloths in a sanitization solution in between use. Sanitizing solution is too weak OF SANI SOLUTION ]",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "GRANO PASTA BAR",
+    "address": "1031 W 36TH ST",
+    "zipcode": "21211",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "12/10/2025",
+    "violations": [
+      {
+        "code": 10,
+        "description": "The person-in-charge shall ensure that potentially hazardous food is thawed in a refrigerated unit that does not exceed 41\u00b0F; under potable running water that is at or below 70\u00b0F or below with sufficient force to agitate and float off loose particles; in the microwave only when the food will be immediately cooked or immediately transferred to conventional cooking facilities as part of a continuous cooking process [10.15.03.09D]. Thaw all frozen foods by one of the approved methods. SHRIMP THAWING AT ROOM",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 16,
+        "description": "(1) \u00fcThe person-in-charge shall ensure that when storing and holding food, containers of food are stored in a manner that will protect from splash and other contamination [10.15.03.06B(2)(d)]. Sealed Raw BEEF (2) The person-in-charge shall ensure that when storing and holding food, containers of food are stored off the floor and in a manner that will protect from splash and other contamination [10.15.03.06B(2)]. Store all containers of food in an approved manner. [10.15.03.06B(2)] OBSERVED FACILITY USING CRATE",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 24,
+        "description": "The person-in-charge shall ensure that stored containers and utensils are covered or inverted whenever possible [10.15.03.17E]. Invert or cover all kitchenware and containers during storage. Containers not covered or stored in an inverted position OBSERVED FOOD CONTAINERS STORED FACED UP.",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 25,
+        "description": "The person-in-charge shall ensure that food equipment meets design standards [10.15.03.15A(1)]. Discontinue using equipment and utensils that are not NSF or equivalent, Baking Industry Sanitation Standards Committee, National Automation Merchandizing Association, International Association of Milk and Food Sanitarian\u2019s \u201c3-A Sanitary Standards\u201d or other applicable published standards accepted by the approving authority. Non-NSF or equivalent sanitation standards equipment being used OBSERVED FACILITY USING CLOTHS TO LINE BOTTOM OF LOWBOY REFRIGERATOR NEXT TO",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "PETE'S GRILLE",
+    "address": "3130 GREENMOUNT AVE",
+    "zipcode": "21218",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "05/15/2025",
+    "violations": [
+      {
+        "code": 43,
+        "description": "Complaint Details : SR# 397967 COMPLAINANT STATES WORKERS DO NOT WEAR HAIR RESTRAINTS OR GLOVES. AND OLD COFFEE IS STORED IN JARS, OLD FOOD IS ADDED TO Observations : AT THE TIME OF INVESTIGATION ALL EMPLOYEES REQUIRED TO WEAR GLOVES AND HAIR RESTRAINTS WERE WEARING THEM. FACILITY DOES NOT KEEP OLD COFFEE, ONE POT IS HELD WARMING WHILE ANOTHER POT IS BREWING. FACILITY MAKES FOOD FOR CUSTOMERS TO ORDER. SOME FOODS ARE COOKED, COOLED, THEN REHEATED AND HOT HELD ON THE GRILL FOR QUICK SERVICE SUCH AS SCRAPPLE AND BACON.",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "MATSURI RESTAURANT",
+    "address": "1105 S CHARLES ST",
+    "zipcode": "21230",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "10/30/2025",
+    "violations": [
+      {
+        "code": 6,
+        "description": "a \u00fcThe person-in-charge shall ensure that when storing and holding food the internal temperature of a potentially hazardous food is kept at 41 \u00b0F or less [10.15.03.06B(7)]. Potentially hazardous cold food",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 17,
+        "description": "The person-in-charge shall ensure that when in food preparation or utensil washing areas, an employee drinks only from a covered beverage container [10.15.03.14L(1)]. Provide and use lids for all employee drinking cups in food preparation and utensil washing areas. Employee(s) drinking uncovered beverage",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 20,
+        "description": "The person-in-charge shall ensure a container of a poisonous or toxic material is prominently and distinctively marked or labeled for easy identification [10.15.03.13B(2)]. Label all poisonous or toxic materials not in their original container. Toxic materials not adequately labeled CLEAR CHEMICAL",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "ABBEY BURGER BISTRO",
+    "address": "1041 MARSHALL ST",
+    "zipcode": "21230",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "10/20/2025",
+    "violations": [
+      {
+        "code": 46,
+        "description": "The facility is recommended to do the following to avoid potential violations from the Health Department or another Agency: FACILITY IS DEFINITELY CLOSED LOOKING IN FROM THE OUTSIDE AND I WAS UNABLE TO CONTACT THE OWNER. THEY JUST RENEWED THE LICENSE IN JULY. I WILL Site: []",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "WILEY GUNTERS",
+    "address": "823 E FORT AVE",
+    "zipcode": "21230",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "12/18/2025",
+    "violations": [
+      {
+        "code": 16,
+        "description": "The person-in-charge shall ensure that when storing and holding food, containers of food are stored off the floor and in a manner that will protect from splash and other contamination [10.15.03.06B(2)]. Store all containers of food in an approved manner. [10.15.03.06B(2)] Elevate containers of food off the",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 17,
+        "description": "\u00fcThe person-in-charge shall ensure that when in food preparation or utensil washing areas, an employee drinks only from a covered beverage container [10.15.03.14L(1)]. Provide and use lids for all employee drinking cups in food preparation and utensil washing areas. Employee(s) drinking uncovered beverage",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 21,
+        "description": "(1) The person-in-charge shall ensure that wiping cloths are rinsed and stored in one of the approved sanitizing solutions when used wet for wiping spills from the surfaces of equipment [10.15.03.16N(3)]. Soak all wiping cloths in a sanitization solution in between use. No sanitization solution is provided to (2) The person-in-charge shall ensure that wiping cloths are free of food debris when used dry for wiping food spills on tableware [10.15.03.16N(2)]. Dirty wiping cloth used on table ware undefined: Describe.",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 23,
+        "description": "The person-in-charge shall ensure that single service articles are used only once [10.15.03.17H(3)]. Prohibit the re-use of single service items. Single-service items re-used REUSING CONDIMENTS CUP",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 24,
+        "description": "The person in charge shall ensure that while displaying and serving food during pauses in food preparation or dispensing, utensils such as scoops, spoons, and dippers are stored in a running water dipper well, in hot water that is maintained at 135\u00b0F or above, with the handle above the top of the food , on a clean and sanitized portion of the food preparation or cooking equipment, or in a clean, protected location if the utensils are used with a food that is not potentially hazardous [10.15.03.06C(7)]. Store food preparation and dispensing utensils properly to protect against possible contamination. Utensils not stored above the top of the food or on a clean, dry surface ICE SCOOP HANDLE OBSERVED",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "VACCARO'S ITALIAN PASTRY SHOP, INC.",
+    "address": "2919 O'DONNELL ST",
+    "zipcode": "21202",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "10/22/2025",
+    "violations": [
+      {
+        "code": 6,
+        "description": "a \u00fcThe person-in-charge shall ensure that when storing and holding food the internal temperature of a potentially hazardous food is kept at 41 \u00b0F or less [10.15.03.06B(7)]. Potentially hazardous cold food On Site: [DISCARDED]",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 16,
+        "description": "The person-in-charge shall ensure that ice is made in an ice-making machine that is located, installed, operated, and maintained to prevent contamination [10.15.03.04I(1)(b)(ii)]. Interior of ice machine has",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 22,
+        "description": "The person-in-charge shall ensure that openings into the building are effectively protected against the entrance of insects and rodents [10.15.03.20E(3)(a)]. Provide and use tight fitting and self-closing doors to the exterior to protect against vermin Door to exterior is not tight fitting OBSERVED SMALL GAP UNDER FRONT ENTRANCE DOOR. INSTALL TIGHT FITTING DOORSWEEP TO PREVENT PEST",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 23,
+        "description": "\u00fcThe person-in-charge shall ensure that single service articles are handled and dispensed in a manner that prevents contamination of surfaces that come into contact with food or the mouth of the user [10.15.03.17H(2)]. Store all single service containers upside down during display and dispensing. Single-service containers stored with open end up TO GO CONTAINERS STORED OPEN ENS UP [INVERTED CONTAINERS]",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 24,
+        "description": "The person-in-charge shall ensure that utensils are air dried before being stored or stored in a self-draining position on hooks or racks constructed of a corrosion resistant material [10.15.03.17D]. Utensils not properly air dried before storing OBSERVED CONTAINERS WET NESTING. ALLOW",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 25,
+        "description": "The person-in-charge shall ensure that equipment and utensils are designed, constructed, and maintained to accomplish the intended and required functions [10.15.03.15A(3)(a)]. Discontinue using inadequate equipment for storage, thawing, cooling, reheating, or holding food. Equipment and/or utensil not designed, constructed and/or maintained to accomplish the intended and required function TWO DOOR LOWBOY HOLDING 46-48F. DISCONTINUE STORING POTENTIALLY HAZARDOUS FOOD",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "LA TAVOLA",
+    "address": "248 ALBEMARLE ST",
+    "zipcode": "21202",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "08/15/2025",
+    "violations": [
+      {
+        "code": 16,
+        "description": "(1) The person-in-charge shall ensure that when storing and holding food, containers of food are stored in a manner that will protect from splash and other contamination [10.15.03.06B(2)(d)]. Cover all food to protect it against possible contamination. Uncovered UNCOVERED PASTA IN CHEST FREEZER. (2) The person-in-charge shall ensure that ice is handled, transported, and stored in a manner that precludes contamination [10.15.03.04I(3)]. Ice handled in a manner that may cause contamination ICE SCOOP STORED ON TOP OF DIRTY ICE BIN. STORE ICE SCOOP ON A CLEAN AMD DRY (3) The person-in-charge shall ensure that when storing and holding food, containers of food are stored in a manner that will protect from splash and other contamination [10.15.03.06B(2)(d)]. Intact raw shell eggs stored above ready-to-eat foods Shell eggs above RAW EGGS STORED ABOVE BELL PEPPERS.",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 19,
+        "description": "(1) The person-in-charge shall ensure that hand washing facilities are equipped with a means of drying hands, such as individual towels in dispensers [10.15.03.18K(4)(a)]. Provide/ repair mounted paper towel dispenser to wall above all hand washing sinks within premises. No paper towels in dispenser NO (2) The person-in-charge shall ensure that hand washing facilities are to be kept clean and in good repair [10.15.03.18K(6)]. Hand washing facility needs repair BAR HANDSINK IS LEAKING FROM RIGHT",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 21,
+        "description": "The person-in-charge shall ensure that wiping cloths are rinsed and stored in one of the approved sanitizing solutions when used wet for wiping spills from the surfaces of equipment [10.15.03.16N(3)]. Soak all wiping cloths in a sanitization solution in between use. Wiping cloths are not being stored in the provided sanitization solution WIPING CLOTHS ARE SITTING ON NON FOOD CONTACT",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "AMICCI'S, INC.",
+    "address": "231 S HIGH ST",
+    "zipcode": "21202",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "09/16/2025",
+    "violations": [
+      {
+        "code": 43,
+        "description": "Complaint Details : SR# 25-00794620: COMPLAINT STATES A LARGE ROACH WAS FOUND AT Observations : AT TIME OF INVESTIGATION, NO EVIDENCE OF ROACHES WERE OBSERVED THROUGHOUT THE FACILITY. DINING, FOOD PREP, AND FOOD STORAGE AREAS WERE INSPECTED. FACILITY RECEIVES WEEKLY PEST CONTROL SERVICES BY XPEL WITH THE LAST SERVICE CONDUCTED ON 9/15/25. REPORT NOTES FACILITY WAS TREATED BUT DOES NOT",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "CHARLESTON",
+    "address": "1000 LANCASTER ST",
+    "zipcode": "21202",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "02/06/2025",
+    "violations": [
+      {
+        "code": 13,
+        "description": "The person-in-charge shall ensure that food temperature measuring devices are used to monitor the temperature of potentially hazardous foods; graduated and accurate within plus or minus 2\u00b0F; calibrated annually or more frequently; and cleaned and sanitized between uses indifferent foods to prevent cross-contamination [10.15.03.09A]. Thermometer not provided NO THERMOMETER INSIDE WALK IN Site: []",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 16,
+        "description": "The person-in-charge shall ensure that ice is made in an ice-making machine that is located, installed, operated, and maintained to prevent contamination [10.15.03.04I(1)(b)(ii)]. Interior of ice machine has",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 19,
+        "description": "The person-in-charge shall ensure that hand sinks are able to discharge hot and cold running water [10.15.03.18L(2)(a)]. Provide running hot and cold water readily available at all times to each hand sink. No hot water at hand sink NO HOT WATER AT MENS RESTROOM. PER MANAGER, A WORK",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 22,
+        "description": "The person-in-charge shall ensure that openings into the building are effectively protected against the entrance of insects and rodents [10.15.03.20E(3)(a)]. Provide and use tight fitting and self-closing doors to the exterior to protect against vermin Door to exterior is not tight fitting MAIN ENTRANCE DOOR HAS WORN WEATHER STRIPS. REPLACE AND ENSURE ALL DOORS TO THE EXTERIOR ARE",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 24,
+        "description": "The person in charge shall ensure that while displaying and serving food during pauses in food preparation or dispensing, utensils such as scoops, spoons, and dippers are stored in a running water dipper well, in hot water that is maintained at 135\u00b0F or above, with the handle above the top of the food , on a clean and sanitized portion of the food preparation or cooking equipment, or in a clean, protected location if the utensils are used with a food that is not potentially hazardous [10.15.03.06C(7)]. Store food preparation and dispensing utensils properly to protect against possible contamination. Utensils not stored above the top of the food or on a clean, dry surface SCOOPS FOR DRY PRODUCT ARE SITTING INSIDE DRY PRODUCT. STORE SCOOPS ON A CLEAN DRY SURFACE AWAY FROM",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "AZUMI",
+    "address": "725 ALICEANNA ST",
+    "zipcode": "21202",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "08/01/2025",
+    "violations": [
+      {
+        "code": 43,
+        "description": "Complaint Details : SR# 25-649750 COMPLAINANT CONTRACTED SCOMBROID POISONING Observations : BLUEFIN TUNA IS RECEIVED FRESH, AND CHECKED FOR QUALITY/TEMPERATURE AT RECEIVING. IT IS THEN MOVED TO THE WALK IN COOLER FOR A COUPLE HOURS UNTIL IT IS CUT, PORTIONED, WRAPPED, AND LABELED. IT IS THEN FROZEN. PORTIONS ARE REMOVED FIRST IN FIRST OUT AND THAWED IN THE WALK IN COOLER OVERNIGHT. THE BLUEFIN TUNA IS MOVED TO THE SUSHI DISPLAY COOLER AND SERVED RAW AS SASHIMI. TUNA VENDOR IS TRUE WORLD FOODS. THERE IS ONE SHIPMENT/INVOICE (7/3) FROM 6/27 TO 7/27 CONTAINING BLUEFIN TUNA. ALL TUNA WAS OBSERVED TO BE HELD",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "IRON ROOSTER CANTON",
+    "address": "3721 BOSTON ST",
+    "zipcode": "21224",
+    "city": "Baltimore",
+    "state": "MD",
+    "score": null,
+    "last_inspection": "09/11/2025",
+    "violations": [
+      {
+        "code": 6,
+        "description": "a \u00fcThe person-in-charge shall ensure that when storing and holding food the internal temperature of a potentially hazardous food is kept at 41 \u00b0F or less [10.15.03.06B(7)]. Potentially hazardous cold food",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 16,
+        "description": "\u00fcThe person-in-charge shall ensure that ice is handled, transported, and stored in a manner that precludes contamination [10.15.03.04I(3)]. Ice handled in a manner that may cause contamination",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 19,
+        "description": "\u00fcThe person-in-charge shall ensure that hand washing facilities are accessible at all times [10.15.03.18K(2)]. Discontinue blocking the hand washing sink In food processing area with BAR HAND",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 23,
+        "description": "\u00fcThe person-in-charge shall ensure that single service articles are used only once [10.15.03.17H(3)]. Prohibit the re-use of single service items. Single-service items re-used PLATIC SPOON OBSERVED",
+        "status": "critical",
+        "corrected_on_site": false
+      },
+      {
+        "code": 24,
+        "description": "(1) \u00fcThe person in charge shall ensure that while displaying and serving food during pauses in food preparation or dispensing, utensils such as scoops, spoons, and dippers are stored in a running water dipper well, in hot water that is maintained at 135\u00b0F or above, with the handle above the top of the food , on a clean and sanitized portion of the food preparation or cooking equipment, or in a clean, protected location if the utensils are used with a food that is not potentially hazardous [10.15.03.06C(7)]. Store food preparation and dispensing utensils properly to protect against possible contamination. Utensils not stored above the top of the food or on a clean, dry surface SPOON HANDLE TOUCHING SOUR (2) The person-in-charge shall ensure that proper and effective cleaning and sanitization occurs for all food contact surfaces and equipment [10.15.03.16B]. Effectively clean and sanitize food contact surfaces. Food contact surfaces not effectively cleaned and sanitized as often as needed BAR SODA GUN HAS",
+        "status": "critical",
+        "corrected_on_site": false
+      }
+    ]
+  }
+]
