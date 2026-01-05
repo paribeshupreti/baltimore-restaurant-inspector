@@ -39,7 +39,7 @@ export default async function handler(req, res) {
   try {
     await resend.emails.send({
       from: 'Baltimore Restaurant Inspector <onboarding@resend.dev>',
-      to: 'paribeshupreti@gmail.com',
+      to: process.env.CONTACT_EMAIL,
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
