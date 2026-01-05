@@ -164,6 +164,8 @@ export default function RestaurantHealthScores() {
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
   const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [contactLoading, setContactLoading] = useState(false);
+  const [contactError, setContactError] = useState('');
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [zipcodeSearch, setZipcodeSearch] = useState('');
@@ -259,18 +261,43 @@ export default function RestaurantHealthScores() {
     { id: 'recent', label: 'Recent Inspections', icon: Clock }
   ];
 
-  const handleContactSubmit = () => {
+  const handleContactSubmit = async () => {
     if (!contactForm.name || !contactForm.email || !contactForm.message) {
-      alert('Please fill in all fields');
+      setContactError('Please fill in all fields');
       return;
     }
-    console.log('Contact form submitted:', contactForm);
-    setContactSubmitted(true);
-    setTimeout(() => {
-      setShowContactModal(false);
-      setContactSubmitted(false);
-      setContactForm({ name: '', email: '', message: '' });
-    }, 2000);
+
+    setContactLoading(true);
+    setContactError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setContactSubmitted(true);
+      setTimeout(() => {
+        setShowContactModal(false);
+        setContactSubmitted(false);
+        setContactForm({ name: '', email: '', message: '' });
+        setContactError('');
+      }, 2500);
+    } catch (error) {
+      console.error('Error sending contact form:', error);
+      setContactError(error.message || 'Failed to send message. Please try again.');
+    } finally {
+      setContactLoading(false);
+    }
   };
 
   const t = {
@@ -374,7 +401,9 @@ export default function RestaurantHealthScores() {
                         </div>
                         <div className="flex-1 text-left min-w-0">
                           <p className="font-semibold text-sm sm:text-base truncate">{r.name}</p>
-                          <p className={`text-xs sm:text-sm ${t.subtle} truncate`}>{r.cuisine} • {r.neighborhood}</p>
+                          <p className={`text-xs sm:text-sm ${t.subtle} truncate`}>
+                            {r.cuisine !== 'Unknown' ? `${r.cuisine} • ` : ''}{r.neighborhood}
+                          </p>
                         </div>
                         <div className="text-right flex-shrink-0">
                           <div className={`text-xs ${t.muted} whitespace-nowrap`}>{r.violations.length} violation{r.violations.length !== 1 ? 's' : ''}</div>
@@ -439,7 +468,9 @@ export default function RestaurantHealthScores() {
                 </div>
               </div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">{highestRated.name}</h3>
-              <p className={`text-sm ${t.muted} mb-4`}>{highestRated.cuisine} • {highestRated.neighborhood}</p>
+              <p className={`text-sm ${t.muted} mb-4`}>
+                {highestRated.cuisine !== 'Unknown' ? `${highestRated.cuisine} • ` : ''}{highestRated.neighborhood}
+              </p>
               <div className="flex items-center gap-3 mb-3">
                 <StarDisplay stars={highestRated.starRating} size="xl" />
               </div>
@@ -463,7 +494,9 @@ export default function RestaurantHealthScores() {
                 </div>
               </div>
               <h3 className="text-lg sm:text-xl font-bold mb-2">{lowestRated.name}</h3>
-              <p className={`text-sm ${t.muted} mb-4`}>{lowestRated.cuisine} • {lowestRated.neighborhood}</p>
+              <p className={`text-sm ${t.muted} mb-4`}>
+                {lowestRated.cuisine !== 'Unknown' ? `${lowestRated.cuisine} • ` : ''}{lowestRated.neighborhood}
+              </p>
               <div className="flex items-center gap-3 mb-3">
                 <StarDisplay stars={lowestRated.starRating} size="xl" />
               </div>
@@ -593,7 +626,9 @@ export default function RestaurantHealthScores() {
                           
                           {/* Restaurant Name - Larger on mobile */}
                           <h3 className="font-bold text-lg sm:text-xl mb-1">{r.name}</h3>
-                          <p className={`text-sm ${t.muted}`}>{r.cuisine} • {r.neighborhood}</p>
+                          <p className={`text-sm ${t.muted}`}>
+                            {r.cuisine !== 'Unknown' ? `${r.cuisine} • ` : ''}{r.neighborhood}
+                          </p>
                         </div>
                         
                         {/* Violation Badge - Full width on mobile */}
@@ -922,6 +957,14 @@ export default function RestaurantHealthScores() {
                   <p className={t.muted}>
                     Questions about the data? Found an error? We'd like to hear from you.
                   </p>
+
+                  {contactError && (
+                    <div className={`${darkMode ? 'bg-red-900/20 border-red-800' : 'bg-red-50 border-red-200'} border rounded-lg p-3 flex items-start gap-2`}>
+                      <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
+                      <p className={`text-sm ${darkMode ? 'text-red-200' : 'text-red-800'}`}>{contactError}</p>
+                    </div>
+                  )}
+
                   <div>
                     <label className={`block text-sm font-medium mb-2 ${t.text}`}>Name</label>
                     <input
@@ -929,7 +972,8 @@ export default function RestaurantHealthScores() {
                       value={contactForm.name}
                       onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
                       placeholder="Your name"
-                      className={`w-full px-4 py-3 ${t.input} border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition`}
+                      disabled={contactLoading}
+                      className={`w-full px-4 py-3 ${t.input} border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition ${contactLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                     />
                   </div>
                   <div>
@@ -939,7 +983,8 @@ export default function RestaurantHealthScores() {
                       value={contactForm.email}
                       onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                       placeholder="your.email@example.com"
-                      className={`w-full px-4 py-3 ${t.input} border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition`}
+                      disabled={contactLoading}
+                      className={`w-full px-4 py-3 ${t.input} border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition ${contactLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                     />
                   </div>
                   <div>
@@ -949,15 +994,26 @@ export default function RestaurantHealthScores() {
                       onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                       placeholder="Your message..."
                       rows={4}
-                      className={`w-full px-4 py-3 ${t.input} border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition resize-none`}
+                      disabled={contactLoading}
+                      className={`w-full px-4 py-3 ${t.input} border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition resize-none ${contactLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                     />
                   </div>
                   <button
                     onClick={handleContactSubmit}
-                    className={`w-full ${darkMode ? 'bg-slate-600 hover:bg-slate-500' : 'bg-slate-900 hover:bg-slate-800'} text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2`}
+                    disabled={contactLoading}
+                    className={`w-full ${darkMode ? 'bg-slate-600 hover:bg-slate-500' : 'bg-slate-900 hover:bg-slate-800'} text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2 ${contactLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
-                    <Send className="w-4 h-4" />
-                    Send Message
+                    {contactLoading ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </div>
               ) : (
