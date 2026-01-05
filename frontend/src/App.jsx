@@ -173,7 +173,7 @@ export default function RestaurantHealthScores() {
 
   // Load restaurant data from JSON file
   useEffect(() => {
-    fetch('/data/test_baltimore_restaurants.json')
+    fetch('/data/baltimore_restaurants.json')
       .then(res => {
         if (!res.ok) throw new Error('Failed to load restaurant data');
         return res.json();
