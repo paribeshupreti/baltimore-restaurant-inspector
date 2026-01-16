@@ -39,59 +39,109 @@ BALTIMORE_ZIP_CODES = [
     '21239', '21251', '21287'
 ]
 
-BALTIMORE_RESTAURANTS_LIST = [
-    "Faidley's Seafood",
-    "The Food Market",
-    "Clavel",
-    "Thames Street Oyster House",
-    "LP Steamers",
-    "Ekiben",
-    "The Charmery",
-    "Miss Shirley's Cafe",
-    "The Helmand",
-    "Blue Moon Cafe",
-    "Captain James",
-    "Max's Taphouse",
-    "Tavern on the Hill",
-    "Red Emma's",
-    "Herb & Soul",
-    "Paulie Gee's",
-    "Golden West Cafe",
-    "The Corner Pantry",
-    "Cafe Hon",
-    "Grano Pasta Bar",
-    "Pete's Grille",
-    "The Dizz",
-    "Eddie's of Charles Village",
-    "Mother's Grille",
-    "Matsuri",
-    "Abbey Burger Bistro",
-    "Wiley Gunters",
-    "Vaccaro's Italian Pastry Shop",
-    "La Tavola",
-    "Amicci's",
-    "Charleston",
-    "Azumi",
-    "The Rusty Scupper",
-    "Manor Hill Tavern",
-    "Lemongrass Thai",
-    "Pappas Restaurant",
-    "Iron Rooster"
-]
+# Restaurant name mapping: Display Name → Portal Search Name
+# For restaurants already scraped successfully, the key and value are the same.
+# For restaurants with different names in the portal, map the display name to the portal name.
+RESTAURANT_NAME_MAP = {
+    # Already found (name same in portal)
+    "The Food Market": "The Food Market",
+    "Clavel": "Clavel",
+    "Thames Street Oyster House": "Thames Street Oyster House",
+    "Ekiben": "Ekiben",
+    "The Charmery": "The Charmery",
+    "The Helmand": "The Helmand",
+    "Red Emma's": "Red Emma's",
+    "Grano Pasta Bar": "Grano Pasta Bar",
+    "Pete's Grille": "Pete's Grille",
+    "Matsuri": "Matsuri",
+    "Abbey Burger Bistro": "Abbey Burger Bistro",
+    "Wiley Gunters": "Wiley Gunters",
+    "Vaccaro's Italian Pastry Shop": "Vaccaro's Italian Pastry Shop",
+    "La Tavola": "La Tavola",
+    "Amicci's": "Amicci's",
+    "Charleston": "Charleston",
+    "Azumi": "Azumi",
+    "Iron Rooster": "Iron Rooster",
 
-# Restaurant name aliases: Display Name → Portal Search Name
-# Add mappings here when you discover restaurants with different names in the portal
-RESTAURANT_NAME_ALIASES = {
+    # Inner Harbor / Downtown
+    "Phillips Seafood": "PHILLIPS SEAFOOD",
+    "McCormick & Schmick's": "MCCORMICK & SCHMICK'S SEAFOOD",
+    "Hard Rock Cafe Baltimore": "HARD ROCK CAFE",
+    
+    # Fells Point / Canton
+    "The Horse You Came In On Saloon": "HORSE YOU CAME IN ON SALOON",
+    "Sláinte Irish Pub": "SLAINTE IRISH PUB",
+    "Barcocina": "BARCOCINA",
+    "Di Pasquale's": "DI PASQUALE'S MARKETPLACE",
+    "Of Love and Regret": "OF LOVE AND REGRET",
+    
+    # Little Italy
+    "Sabatino's": "SABATINO'S ITALIAN RESTAURANT",
+    "Chiapparelli's": "CHIAPPARELLI'S",
+    "Aldo's": "ALDO'S RISTORANTE ITALIANO",
+    "Ciao Bella": "CIAO BELLA",
+    
+    # Federal Hill
+    "Ryleigh's Oyster": "RYLEIGH'S OYSTER",
+    "Cross Street Market": "CROSS STREET MARKET",
+    
+    # Harbor East
+    "The Capital Grille": "CAPITAL GRILLE",
+    "Roy's Restaurant": "ROY'S RESTAURANT",
+    "Ouzo Bay": "OUZO BAY",
+    "Cinghiale": "CINGHIALE",
+    
+    # Mt. Vernon / Station North
+    "The Brewer's Art": "BREWER'S ART",
+    "Dooby's": "DOOBY'S",
+    "Joe Squared": "JOE SQUARED PIZZA",
+    
+    # Hampden
+    "Cafe Hon": "CAFE HON",
+    "Dylan's Oyster Cellar": "DYLAN'S OYSTER CELLAR",
+    "The Wine Source": "WINE SOURCE",
+    
+    # Charles Village / Remington
+    "R House": "R HOUSE",
+    "Sophomore Coffee": "SOPHOMORE COFFEE",
+    
+    # Power Plant / Inner Harbor
+    "Medieval Times": "MEDIEVAL TIMES DINNER & TOURNAMENT",
+    "Tir Na Nog Irish Bar": "TIR NA NOG IRISH BAR",
+    
+    # Locust Point
+    "Nick's Fish House": "NICK'S FISH HOUSE",
+    "Bluegrass Tavern": "BLUEGRASS TAVERN",
+    
+    # Popular Chains
+    "Chipotle Mexican Grill": "CHIPOTLE",
+    "The Cheesecake Factory": "CHEESECAKE FACTORY",
+    "P.F. Chang's": "P.F. CHANG'S CHINA BISTRO",
+    
+    # Brunch / Diners
+    "Papermoon Diner": "PAPER MOON DINER",
+    
+    # Pizza
+    "Hersh's Pizza": "HERSH'S PIZZA & DRINKS",
+    "Matthew's Pizza": "MATTHEW'S PIZZA",
+    
+    # Seafood
+    "G&M Restaurant": "G & M RESTAURANT",
+    "Bo Brooks": "BO BROOKS RESTAURANT",
+    "Canton Dockside": "CANTON DOCKSIDE",
+
+    # Aliases (display name → portal name)
     "Faidley's Seafood": "FAIDLEY'S EDP SEAFOOD INC STALL 21",
     "LP Steamers": "L.P. STEAMERS",
     "Miss Shirley's Cafe": "MISS SHIRLEY'S CAFÉ",
-    "Captain James":"CAPTAIN JAMES LANDING CRABSHED",
-    "Max's Taphouse":"MAX'S ON BROADWAY",
-
-
+    "Blue Moon Cafe": "BLUE MOON CAFE",
+    "Captain James": "CAPTAIN JAMES LANDING CRABSHED",
+    "Max's Taphouse": "MAX'S ON BROADWAY",
+    "Golden West Cafe": "GOLDEN WEST CAFÉ",
+    "The Rusty Scupper": "RUSTY SCUPPER",
 
     # Add more mappings as you discover them from analytics
-    # "Display Name": "Portal Name",
+    # Format: "Display Name": "Portal Name",
 }
 
 
@@ -232,6 +282,28 @@ class AnalyticsTracker:
     def increment_session_count(self):
         """Increment total session count"""
         self.analytics["metadata"]["total_sessions"] += 1
+
+    def sync_with_restaurant_map(self, restaurant_map):
+        """
+        Ensure analytics only contains restaurants from the current restaurant map.
+        Removes any restaurants that are not in the map (from previous attempts).
+        """
+        current_restaurants = set(restaurant_map.keys())
+        analytics_restaurants = set(self.analytics["restaurant_searches"].keys())
+
+        # Find restaurants to remove (in analytics but not in current map)
+        restaurants_to_remove = analytics_restaurants - current_restaurants
+
+        if restaurants_to_remove:
+            print(f"🧹 Cleaning up analytics: removing {len(restaurants_to_remove)} restaurants not in current list")
+            for restaurant in restaurants_to_remove:
+                del self.analytics["restaurant_searches"][restaurant]
+
+            # Recalculate total searches based on remaining restaurants
+            self.analytics["metadata"]["total_searches"] = sum(
+                data["search_count"]
+                for data in self.analytics["restaurant_searches"].values()
+            )
 
     def get_demand_analysis(self):
         """Generate demand analysis for not found and top searched restaurants"""
@@ -467,16 +539,16 @@ class BaltimoreZipScraper:
         print("=" * 60)
 
     def get_portal_name(self, restaurant_name):
-        """Get the portal search name if an alias exists, otherwise return original name"""
-        return RESTAURANT_NAME_ALIASES.get(restaurant_name, restaurant_name)
+        """Get the portal search name from the map"""
+        return RESTAURANT_NAME_MAP.get(restaurant_name, restaurant_name)
 
     def get_display_name(self, restaurant_name):
         """Get the display name from a portal name (reverse lookup)"""
-        # Check if this is a portal name (value in the aliases dict)
-        for display_name, portal_name in RESTAURANT_NAME_ALIASES.items():
+        # Check if this is a portal name (value in the map)
+        for display_name, portal_name in RESTAURANT_NAME_MAP.items():
             if portal_name.lower() == restaurant_name.lower():
                 return display_name
-        # If not found in aliases, return the original name
+        # If not found in map, return the original name
         return restaurant_name
 
     def search_by_restaurant_name(self, restaurant_name):
@@ -1059,11 +1131,14 @@ class BaltimoreZipScraper:
         Priority: restaurants > zip_codes
         """
         if restaurants is None and zip_codes is None:
-            restaurants = BALTIMORE_RESTAURANTS_LIST[:5]  # Default to first 5 restaurants
+            restaurants = list(RESTAURANT_NAME_MAP.keys())[:5]  # Default to first 5 restaurants
 
         print("="*60)
         print("🦀 Baltimore Restaurant Health Scraper")
         print("="*60)
+
+        # Sync analytics with current restaurant map (removes old restaurants from analytics)
+        self.analytics_tracker.sync_with_restaurant_map(RESTAURANT_NAME_MAP)
 
         # Increment session count
         self.analytics_tracker.increment_session_count()
@@ -1127,8 +1202,7 @@ def quick_test():
     print("🧪 Quick test with a few restaurants...\n")
     # Use separate test output file
     scraper = BaltimoreZipScraper(output_file="../data/test_baltimore_restaurants.json")
-    test_restaurants = ["Faidley's Seafood", "The Food Market", "Ekiben","Herb & Soul",
-    "Paulie Gee's",
+    test_restaurants = ["Faidley's Seafood", "The Food Market", "Ekiben",
     "Golden West Cafe",
     "The Corner Pantry"]
     scraper.run(restaurants=test_restaurants)
@@ -1148,8 +1222,8 @@ if __name__ == "__main__":
         quick_test()
     else:
         scraper = BaltimoreZipScraper()
-        # Run all restaurants from the list
-        scraper.run(restaurants=BALTIMORE_RESTAURANTS_LIST)
+        # Run all restaurants from the map
+        scraper.run(restaurants=list(RESTAURANT_NAME_MAP.keys()))
 
         # To use ZIP codes instead, uncomment this:
         # scraper.run(zip_codes=BALTIMORE_ZIP_CODES)
