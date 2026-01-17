@@ -2,10 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true, // For static export
+    unoptimized: true,
   },
-  // Enable static export for static hosting (Porkbun)
-  output: 'export',
   trailingSlash: true,
 }
 
