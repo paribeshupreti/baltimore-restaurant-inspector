@@ -475,18 +475,9 @@ export default function RestaurantHealthScores() {
         </div>
       </div>
 
-      {/* Ad Space 1 */}
-      <div className={`border-b ${t.border}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className={`${t.adBg} rounded-lg flex items-center justify-center`} style={{ height: '90px' }}>
-            <span className={`${t.faint} text-xs`}>Ad</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        
+
         {/* Featured - Highest/Lowest */}
         {lowestRated && highestRated && (
           <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-8">
@@ -543,6 +534,13 @@ export default function RestaurantHealthScores() {
             </div>
           </div>
         )}
+
+        {/* Ad Space 1 */}
+        <div className="mb-8">
+          <div className={`${t.adBg} rounded-lg flex items-center justify-center`} style={{ height: '90px' }}>
+            <span className={`${t.faint} text-xs`}>Ad</span>
+          </div>
+        </div>
 
         {/* Filter Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
@@ -1138,7 +1136,7 @@ export default function RestaurantHealthScores() {
                   </h3>
                   <div className="space-y-2 sm:space-y-3">
                     {selectedRestaurant.violations.map((v, i) => {
-                      const violationText = typeof v === 'string' ? v : v.description;
+                      const bullets = v.summary_bullets || [typeof v === 'string' ? v : v.description];
                       const severity = typeof v === 'object' ? v.severity : null;
                       // Only show severity badge for known severities (not UNKNOWN)
                       const showSeverityBadge = severity && !severity.includes('UNKNOWN');
@@ -1159,7 +1157,11 @@ export default function RestaurantHealthScores() {
                               {severity}
                             </span>
                           )}
-                          <p className={`text-xs sm:text-sm ${darkMode ? 'text-red-200' : 'text-red-800'}`}>{violationText}</p>
+                          <ul className={`list-disc list-inside space-y-1 text-xs sm:text-sm ${darkMode ? 'text-red-200' : 'text-red-800'}`}>
+                            {bullets.map((bullet, idx) => (
+                              <li key={idx} className="leading-relaxed">{bullet}</li>
+                            ))}
+                          </ul>
                         </div>
                       );
                     })}
