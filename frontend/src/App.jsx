@@ -455,20 +455,20 @@ export default function RestaurantHealthScores() {
             </div>
 
             {/* Data attribution */}
-            <div className="flex items-center justify-center gap-2 text-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-2 text-sm">
               <div className="flex items-center gap-1.5">
-                <div className={`w-2 h-2 ${darkMode ? 'bg-emerald-500' : 'bg-emerald-600'} rounded-full flex-shrink-0`}></div>
-                <span className={t.muted}>Data updated {lastDataUpdate}</span>
+                <div className={`w-2 h-2 ${darkMode ? 'bg-emerald-500' : 'bg-emerald-600'} rounded-full flex-shrink-0 self-center`}></div>
+                <span className={`${t.muted} whitespace-nowrap`}>Data updated {lastDataUpdate}</span>
               </div>
-              <span className={t.faint}>•</span>
+              <span className={`${t.faint} hidden sm:inline`}>•</span>
               <a
                 href="https://health.baltimorecity.gov/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${t.subtle} hover:${t.text} transition flex items-center gap-1.5`}
               >
-                Source: Baltimore Health Dept
-                <ExternalLink className="w-3 h-3 flex-shrink-0" />
+                <span>Source: Baltimore Health Dept</span>
+                <ExternalLink className="w-3 h-3 flex-shrink-0 self-center" />
               </a>
             </div>
           </div>
