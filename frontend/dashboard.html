@@ -506,6 +506,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th style="width: 50px;">#</th>
                             <th onclick="sortTable('name')">
                                 Restaurant Name ${getSortIndicator('name')}
                             </th>
@@ -530,8 +531,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        ${filtered.map(r => `
+                        ${filtered.map((r, index) => `
                             <tr>
+                                <td style="color: var(--text-secondary); font-weight: bold;">${index + 1}</td>
                                 <td><strong>${r.name}</strong></td>
                                 <td>${getStarRatingDisplay(r.star_rating)}</td>
                                 <td>${getViolationsDisplay(r.violations_count)}</td>

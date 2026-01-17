@@ -31,12 +31,16 @@ const guessCuisine = (name) => {
   return 'Unknown';
 };
 
-// Count violations by severity
+// Count violations by severity (don't count UNKNOWN severities in badges)
 const getViolationSeverityCounts = (violations) => {
-  const counts = { SEVERE: 0, MAJOR: 0, MODERATE: 0, MINOR: 0, UNKNOWN_MODERATE: 0 };
+  const counts = { SEVERE: 0, MAJOR: 0, MODERATE: 0, MINOR: 0 };
   violations.forEach(v => {
     if (typeof v === 'object' && v.severity) {
-      counts[v.severity] = (counts[v.severity] || 0) + 1;
+      // Only count known severities for badges
+      if (v.severity === 'SEVERE' || v.severity === 'MAJOR' ||
+          v.severity === 'MODERATE' || v.severity === 'MINOR') {
+        counts[v.severity] = (counts[v.severity] || 0) + 1;
+      }
     }
   });
   return counts;
@@ -171,6 +175,7 @@ export default function RestaurantHealthScores() {
   const [zipcodeSearch, setZipcodeSearch] = useState('');
   const [showShareToast, setShowShareToast] = useState(false);
   const [showAlertsModal, setShowAlertsModal] = useState(false);
+  const [displayCount, setDisplayCount] = useState(5);
   const searchRef = useRef(null);
 
   // Load restaurant data from JSON file
@@ -201,6 +206,11 @@ export default function RestaurantHealthScores() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Reset displayCount when filters change
+  useEffect(() => {
+    setDisplayCount(5);
+  }, [activeFilter, zipcodeSearch]);
 
   const searchResults = useMemo(() => {
     if (!searchTerm.trim() || searchTerm.length < 2 || restaurants.length === 0) return [];
@@ -252,6 +262,18 @@ export default function RestaurantHealthScores() {
   const highestRated = restaurants.length > 0 ? restaurants.reduce((a, b) =>
     a.starRating > b.starRating ? a : b
   ) : null;
+
+  // Get most recent inspection date from data
+  const lastDataUpdate = useMemo(() => {
+    if (restaurants.length === 0) return 'Recently';
+
+    const mostRecentDate = restaurants.reduce((latest, r) => {
+      const inspectionDate = new Date(r.lastInspection);
+      return inspectionDate > latest ? inspectionDate : latest;
+    }, new Date(0));
+
+    return mostRecentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }, [restaurants]);
 
   const filters = [
     { id: 'all', label: 'All Restaurants', icon: Filter },
@@ -424,12 +446,12 @@ export default function RestaurantHealthScores() {
             <div className="flex items-center justify-center gap-2 text-sm">
               <div className="flex items-center gap-1.5">
                 <div className={`w-2 h-2 ${darkMode ? 'bg-emerald-500' : 'bg-emerald-600'} rounded-full`}></div>
-                <span className={t.muted}>Data updated Nov 18, 2024</span>
+                <span className={t.muted}>Data updated {lastDataUpdate}</span>
               </div>
               <span className={t.faint}>•</span>
-              <a 
-                href="https://health.baltimorecity.gov/" 
-                target="_blank" 
+              <a
+                href="https://health.baltimorecity.gov/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={`${t.subtle} hover:${t.text} transition flex items-center gap-1`}
               >
@@ -583,7 +605,7 @@ export default function RestaurantHealthScores() {
               <Search className={`w-16 h-16 ${t.faint} mx-auto mb-4`} />
               <h3 className="text-xl font-semibold mb-2">No restaurants found</h3>
               <p className={t.muted}>
-                {zipcodeSearch 
+                {zipcodeSearch
                   ? `No restaurants found in zipcode ${zipcodeSearch}. Try a different zipcode.`
                   : 'Try adjusting your filters or search criteria.'}
               </p>
@@ -597,7 +619,7 @@ export default function RestaurantHealthScores() {
               )}
             </div>
           ) : (
-            filteredRestaurants.map((r, i) => {
+            filteredRestaurants.slice(0, displayCount).map((r, i) => {
               const stars = r.starRating;
               const colors = getStarColor(stars);
               return (
@@ -653,7 +675,7 @@ export default function RestaurantHealthScores() {
                           {/* Severity Summary */}
                           {r.violations.length > 0 && (() => {
                             const severityCounts = getViolationSeverityCounts(r.violations);
-                            const hasSeverities = severityCounts.SEVERE + severityCounts.MAJOR + severityCounts.MODERATE + severityCounts.MINOR + severityCounts.UNKNOWN_MODERATE > 0;
+                            const hasSeverities = severityCounts.SEVERE + severityCounts.MAJOR + severityCounts.MODERATE + severityCounts.MINOR > 0;
                             return hasSeverities ? (
                               <div className="flex flex-wrap gap-1.5">
                                 {severityCounts.SEVERE > 0 && (
@@ -674,11 +696,6 @@ export default function RestaurantHealthScores() {
                                 {severityCounts.MINOR > 0 && (
                                   <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-600 text-white">
                                     {severityCounts.MINOR} Minor
-                                  </span>
-                                )}
-                                {severityCounts.UNKNOWN_MODERATE > 0 && (
-                                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-gray-600 text-white">
-                                    {severityCounts.UNKNOWN_MODERATE} Unknown
                                   </span>
                                 )}
                               </div>
@@ -729,6 +746,22 @@ export default function RestaurantHealthScores() {
             })
           )}
         </div>
+
+        {/* Load More Button */}
+        {filteredRestaurants.length > displayCount && (
+          <div className="mt-6 text-center">
+            <button
+              onClick={() => setDisplayCount(prev => prev + 5)}
+              className={`${darkMode ? 'bg-slate-600 hover:bg-slate-500' : 'bg-slate-900 hover:bg-slate-800'} text-white px-8 py-3 rounded-lg font-medium transition flex items-center gap-2 mx-auto`}
+            >
+              Load More
+              <ChevronDown className="w-4 h-4" />
+            </button>
+            <p className={`${t.muted} text-sm mt-3`}>
+              Showing {Math.min(displayCount, filteredRestaurants.length)} of {filteredRestaurants.length} restaurants
+            </p>
+          </div>
+        )}
 
         {/* Ad Space 3 */}
         <div className="mt-12">
@@ -955,7 +988,7 @@ export default function RestaurantHealthScores() {
               {!contactSubmitted ? (
                 <div className="space-y-4">
                   <p className={t.muted}>
-                    Questions about the data? Found an error? We'd like to hear from you.
+                    Questions, suggestions, or found an issue? Let us know.
                   </p>
 
                   {contactError && (
@@ -1095,12 +1128,15 @@ export default function RestaurantHealthScores() {
                     {selectedRestaurant.violations.map((v, i) => {
                       const violationText = typeof v === 'string' ? v : v.description;
                       const severity = typeof v === 'object' ? v.severity : null;
+                      // Only show severity badge for known severities (not UNKNOWN)
+                      const showSeverityBadge = severity && !severity.includes('UNKNOWN');
+
                       return (
                         <div
                           key={i}
                           className={`${darkMode ? 'bg-red-900/20 border-red-800' : 'bg-red-50 border-red-200'} border rounded-lg p-3 sm:p-4`}
                         >
-                          {severity && (
+                          {showSeverityBadge && (
                             <span className={`inline-block px-2 py-1 rounded text-xs font-semibold mb-2 ${
                               severity === 'SEVERE' ? 'bg-red-600 text-white' :
                               severity === 'MAJOR' ? 'bg-orange-600 text-white' :
