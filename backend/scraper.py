@@ -28,8 +28,8 @@ except ImportError:
     import PyPDF2
 
 BASE_URL = "https://baltimoreportal.jadian.com/"
-OUTPUT_FILE_JSON = "../data/baltimore_restaurants.json"
-ANALYTICS_FILE = "../data/analytics.json"
+OUTPUT_FILE_JSON = "../frontend/public/data/baltimore_restaurants.json"
+ANALYTICS_FILE = "../frontend/public/data/analytics.json"
 SESSION_RESULTS_DIR = "../logs/session_results/"
 
 BALTIMORE_ZIP_CODES = [
@@ -834,7 +834,7 @@ class BaltimoreZipScraper:
     def get_violation_severity(self, code):
         """
         Determine severity level for a violation code.
-        Unknown codes default to MODERATE (conservative approach).
+        Unknown codes return None (no severity label).
         """
         if code in self.SEVERE_VIOLATIONS:
             return "SEVERE"
@@ -845,7 +845,7 @@ class BaltimoreZipScraper:
         elif code in self.MINOR_VIOLATIONS:
             return "MINOR"
         else:
-            return "UNKNOWN_MODERATE"
+            return None  # Unknown codes have no severity label
 
     def calculate_star_rating(self, violations):
         """
@@ -854,7 +854,7 @@ class BaltimoreZipScraper:
         Severity-weighted system:
         - Any SEVERE violation (pest/illness/temp abuse) = 1 star
         - Considers both severity type and quantity
-        - Unknown codes default to MODERATE severity
+        - Unknown codes treated as MODERATE for rating purposes
 
         Returns: Integer 1-5 (number of stars)
         """
@@ -880,13 +880,14 @@ class BaltimoreZipScraper:
                 moderate_count += 1
             elif severity == "MINOR":
                 minor_count += 1
-            elif severity == "UNKNOWN_MODERATE":
+            elif severity is None:
+                # Unknown codes treated as MODERATE for rating calculation
                 moderate_count += 1
                 unknown_codes.append(code)
 
         # Log unknown codes for review
         if unknown_codes:
-            print(f"        ⚠️  Unknown violation codes: {set(unknown_codes)} (treated as MODERATE)")
+            print(f"        ⚠️  Unknown violation codes: {set(unknown_codes)} (treated as MODERATE for rating)")
 
         total_violations = len(violations)
 
@@ -1062,13 +1063,13 @@ class BaltimoreZipScraper:
                 violations_by_code[code] = {
                     'code': code,
                     'descriptions': [v['description']],
-                    'status': v['status'],
+                    'severity': v['severity'],
                     'corrected_on_site': v['corrected_on_site']
                 }
             else:
                 # Append to existing violation with same code
                 violations_by_code[code]['descriptions'].append(v['description'])
-        
+
         # Convert back to list with numbered descriptions
         violations = []
         for code, data in violations_by_code.items():
@@ -1078,16 +1079,21 @@ class BaltimoreZipScraper:
             else:
                 # Multiple violations - number them
                 description = ' '.join([
-                    f"({i+1}) {desc}" 
+                    f"({i+1}) {desc}"
                     for i, desc in enumerate(data['descriptions'])
                 ])
-            
-            violations.append({
+
+            violation_dict = {
                 'code': code,
                 'description': description,
-                'status': data['status'],
                 'corrected_on_site': data['corrected_on_site']
-            })
+            }
+
+            # Only add severity if it's defined (not None)
+            if data['severity'] is not None:
+                violation_dict['severity'] = data['severity']
+
+            violations.append(violation_dict)
         
         # Step 4: Clean up all violations
         for violation in violations:
@@ -1125,13 +1131,52 @@ class BaltimoreZipScraper:
         total_violations = sum(len(r.get('violations', [])) for r in self.restaurants)
         print(f"📊 Total violations found: {total_violations}")
 
-    def run(self, restaurants=None, zip_codes=None):
+    def get_scraping_mode(self):
+        """Prompt user to select scraping mode"""
+        print("\n" + "="*50)
+        print("Baltimore Restaurant Scraper")
+        print("="*50)
+        print("\nSelect scraping mode:")
+        print("  1. Run full scraper (all restaurants)")
+        print("  2. Re-scrape only 'not_found' restaurants")
+        print("  3. Exit")
+
+        while True:
+            choice = input("\nEnter your choice (1-3): ").strip()
+            if choice in ['1', '2', '3']:
+                return choice
+            print("Invalid choice. Please enter 1, 2, or 3.")
+
+    def get_not_found_restaurants(self):
+        """
+        Returns list of restaurant names with 'not_found' status from analytics.
+        """
+        not_found_restaurants = []
+
+        # Read analytics data
+        analytics_data = self.analytics_tracker.analytics.get('restaurant_searches', {})
+
+        # Filter restaurants with 'not_found' status
+        for restaurant_name, data in analytics_data.items():
+            if data.get('status') == 'not_found':
+                # Verify restaurant still exists in RESTAURANT_NAME_MAP
+                if restaurant_name in RESTAURANT_NAME_MAP:
+                    not_found_restaurants.append(restaurant_name)
+
+        return sorted(not_found_restaurants)  # Sort for consistent display
+
+    def run(self, restaurants=None, zip_codes=None, mode='1'):
         """
         Run scraper by restaurant names OR zip codes.
         Priority: restaurants > zip_codes
+        mode: '1' for full scraper, '2' for selective re-scraping
         """
         if restaurants is None and zip_codes is None:
             restaurants = list(RESTAURANT_NAME_MAP.keys())[:5]  # Default to first 5 restaurants
+
+        # Store mode and original restaurant list for summary
+        self.scraping_mode = mode
+        self.target_restaurants = restaurants.copy() if restaurants else []
 
         print("="*60)
         print("🦀 Baltimore Restaurant Health Scraper")
@@ -1198,6 +1243,44 @@ class BaltimoreZipScraper:
         # Print analytics summary
         self.print_analytics_summary()
 
+        # Print mode 2 specific summary if applicable
+        if hasattr(self, 'scraping_mode') and self.scraping_mode == '2':
+            self.print_selective_rescrape_summary()
+
+    def print_selective_rescrape_summary(self):
+        """Print summary specific to selective re-scraping (mode 2)"""
+        if not hasattr(self, 'target_restaurants') or not self.target_restaurants:
+            return
+
+        print("\n" + "="*60)
+        print("🔄 SELECTIVE RE-SCRAPING SUMMARY")
+        print("="*60)
+
+        # Check which restaurants recovered
+        recovered = []
+        still_not_found = []
+
+        for name in self.target_restaurants:
+            status = self.analytics_tracker.analytics['restaurant_searches'].get(name, {}).get('status')
+            if status in ['successfully_scraped', 'previously_failed_now_success']:
+                recovered.append(name)
+            else:
+                still_not_found.append(name)
+
+        print(f"\n✓ Recovered: {len(recovered)}/{len(self.target_restaurants)} restaurants")
+        if recovered:
+            for name in recovered:
+                print(f"  • {name}")
+
+        print(f"\n✗ Still not found: {len(still_not_found)}/{len(self.target_restaurants)} restaurants")
+        if still_not_found:
+            for name in still_not_found:
+                failure_reasons = self.analytics_tracker.analytics['restaurant_searches'].get(name, {}).get('failure_reasons', ['Unknown'])
+                failure_reason = failure_reasons[-1] if failure_reasons else 'Unknown'
+                print(f"  • {name}: {failure_reason}")
+
+        print("\n" + "="*60)
+
 def quick_test():
     print("🧪 Quick test with a few restaurants...\n")
     # Use separate test output file
@@ -1222,8 +1305,39 @@ if __name__ == "__main__":
         quick_test()
     else:
         scraper = BaltimoreZipScraper()
-        # Run all restaurants from the map
-        scraper.run(restaurants=list(RESTAURANT_NAME_MAP.keys()))
+
+        # Interactive mode selection
+        mode = scraper.get_scraping_mode()
+
+        if mode == '3':
+            print("Exiting scraper.")
+            exit(0)
+
+        # Get restaurant list based on mode
+        if mode == '2':
+            restaurants_to_scrape = scraper.get_not_found_restaurants()
+            if not restaurants_to_scrape:
+                print("\n" + "="*50)
+                print("✅ No 'not_found' restaurants to re-scrape!")
+                print("="*50)
+                print("All restaurants have been successfully scraped or are still being attempted.")
+                exit(0)
+            print(f"\n📋 {len(restaurants_to_scrape)} 'not_found' restaurants will be re-scraped:")
+            for name in restaurants_to_scrape:
+                print(f"  - {name}")
+        else:
+            restaurants_to_scrape = list(RESTAURANT_NAME_MAP.keys())
+            print(f"\n📋 Scraping all {len(restaurants_to_scrape)} restaurants...")
+
+        # Confirm before proceeding
+        print()
+        confirm = input("Proceed? (y/n): ").strip().lower()
+        if confirm != 'y':
+            print("\n❌ Scraping cancelled.")
+            exit(0)
+
+        # Run scraper with selected restaurants and mode
+        scraper.run(restaurants=restaurants_to_scrape, mode=mode)
 
         # To use ZIP codes instead, uncomment this:
         # scraper.run(zip_codes=BALTIMORE_ZIP_CODES)
