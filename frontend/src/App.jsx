@@ -212,6 +212,18 @@ export default function RestaurantHealthScores() {
     setDisplayCount(5);
   }, [activeFilter, zipcodeSearch]);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedRestaurant || showAlertsModal || showAboutModal || showContactModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedRestaurant, showAlertsModal, showAboutModal, showContactModal]);
+
   const searchResults = useMemo(() => {
     if (!searchTerm.trim() || searchTerm.length < 2 || restaurants.length === 0) return [];
     
@@ -493,8 +505,8 @@ export default function RestaurantHealthScores() {
               <p className={`text-xs sm:text-sm ${t.muted} mb-2 sm:mb-4 line-clamp-1`}>
                 {highestRated.cuisine !== 'Unknown' ? `${highestRated.cuisine} • ` : ''}{highestRated.neighborhood}
               </p>
-              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                <StarDisplay stars={highestRated.starRating} size="xl" />
+              <div className="flex items-center gap-1 sm:gap-3 mb-2 sm:mb-3 overflow-hidden">
+                <StarDisplay stars={highestRated.starRating} size="sm" />
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0">
                 <span className="text-base sm:text-2xl font-bold">{highestRated.starRating} Stars</span>
@@ -519,8 +531,8 @@ export default function RestaurantHealthScores() {
               <p className={`text-xs sm:text-sm ${t.muted} mb-2 sm:mb-4 line-clamp-1`}>
                 {lowestRated.cuisine !== 'Unknown' ? `${lowestRated.cuisine} • ` : ''}{lowestRated.neighborhood}
               </p>
-              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                <StarDisplay stars={lowestRated.starRating} size="xl" />
+              <div className="flex items-center gap-1 sm:gap-3 mb-2 sm:mb-3 overflow-hidden">
+                <StarDisplay stars={lowestRated.starRating} size="sm" />
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0">
                 <span className="text-base sm:text-2xl font-bold">{lowestRated.starRating} Star{lowestRated.starRating !== 1 ? 's' : ''}</span>
@@ -569,13 +581,13 @@ export default function RestaurantHealthScores() {
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showFilterMenu ? 'rotate-180' : ''}`} />
               </button>
               {showFilterMenu && (
-                <div className={`absolute top-full right-0 mt-2 ${t.dropdown} border-2 rounded-xl overflow-hidden z-40 w-56 shadow-xl`}>
+                <div className={`absolute top-full left-0 sm:left-auto sm:right-0 mt-2 ${t.dropdown} border-2 rounded-xl overflow-hidden z-40 w-56 shadow-xl`}>
                   {filters.map((f) => {
                     const Icon = f.icon;
                     return (
-                      <button 
-                        key={f.id} 
-                        onClick={() => { setActiveFilter(f.id); setShowFilterMenu(false); }} 
+                      <button
+                        key={f.id}
+                        onClick={() => { setActiveFilter(f.id); setShowFilterMenu(false); }}
                         className={`w-full flex items-center gap-3 px-4 py-3 text-left text-sm transition ${darkMode ? 'hover:bg-slate-700' : 'hover:bg-slate-50'} ${activeFilter === f.id ? `font-semibold ${t.text}` : t.muted}`}
                       >
                         <Icon className="w-4 h-4" />
@@ -1063,12 +1075,12 @@ export default function RestaurantHealthScores() {
 
       {/* Restaurant Detail Modal */}
       {selectedRestaurant && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50" onClick={() => setSelectedRestaurant(null)}>
-          <div className={`${t.card} border-2 ${t.border} rounded-2xl max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl`} onClick={(e) => e.stopPropagation()}>
-            {/* Header with Stars */}
-            <div className={`${getStarColor(selectedRestaurant.starRating).lightBg} ${darkMode ? getStarColor(selectedRestaurant.starRating).darkBg : ''} p-6 sm:p-8 text-center relative border-b-4 ${getStarColor(selectedRestaurant.starRating).border}`}>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50 overflow-y-auto" onClick={() => setSelectedRestaurant(null)}>
+          <div className={`${t.card} border-2 ${t.border} rounded-2xl max-w-2xl w-full max-h-[80vh] sm:max-h-[85vh] flex flex-col shadow-2xl my-auto`} onClick={(e) => e.stopPropagation()}>
+            {/* Header with Stars - Fixed */}
+            <div className={`${getStarColor(selectedRestaurant.starRating).lightBg} ${darkMode ? getStarColor(selectedRestaurant.starRating).darkBg : ''} p-4 sm:p-6 lg:p-8 text-center relative border-b-4 ${getStarColor(selectedRestaurant.starRating).border} flex-shrink-0`}>
               <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex items-center gap-2">
-                <button 
+                <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleShare(selectedRestaurant);
@@ -1078,28 +1090,28 @@ export default function RestaurantHealthScores() {
                 >
                   <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
-                <button 
-                  onClick={() => setSelectedRestaurant(null)} 
+                <button
+                  onClick={() => setSelectedRestaurant(null)}
                   className={`p-2 rounded-lg backdrop-blur-sm transition ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-white/50 hover:bg-white/80'}`}
                 >
                   <X className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
-              <div className="flex justify-center mb-3 sm:mb-4">
-                <StarDisplay stars={selectedRestaurant.starRating} size="xl" />
+              <div className="flex justify-center mb-2 sm:mb-3">
+                <StarDisplay stars={selectedRestaurant.starRating} size="lg" />
               </div>
-              <div className="text-3xl sm:text-4xl font-bold mb-2">{selectedRestaurant.starRating} Stars</div>
-              <div className={`text-base sm:text-lg font-medium ${getStarColor(selectedRestaurant.starRating).text}`}>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">{selectedRestaurant.starRating} Stars</div>
+              <div className={`text-sm sm:text-base lg:text-lg font-medium ${getStarColor(selectedRestaurant.starRating).text}`}>
                 {getStarLabel(selectedRestaurant.starRating)} Safety Rating
               </div>
             </div>
 
-            {/* Content */}
-            <div className="p-4 sm:p-6 lg:p-8">
-              <div className="mb-5 sm:mb-6">
-                <h2 className="text-xl sm:text-2xl font-bold mb-2">{selectedRestaurant.name}</h2>
-                <p className={`${t.muted} mb-3 sm:mb-4 text-sm sm:text-base`}>{selectedRestaurant.address}</p>
-                <div className={`flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm ${t.muted}`}>
+            {/* Content - Scrollable */}
+            <div className="p-4 sm:p-6 lg:p-8 overflow-y-auto flex-1">
+              <div className="mb-4 sm:mb-5">
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">{selectedRestaurant.name}</h2>
+                <p className={`${t.muted} mb-3 sm:mb-4 text-xs sm:text-sm lg:text-base`}>{selectedRestaurant.address}</p>
+                <div className={`flex flex-wrap gap-2 sm:gap-3 lg:gap-4 text-xs sm:text-sm ${t.muted}`}>
                   <span className="flex items-center gap-1.5">
                     <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
                     {selectedRestaurant.neighborhood}
@@ -1113,14 +1125,14 @@ export default function RestaurantHealthScores() {
               </div>
 
               {/* Ad Space in Modal */}
-              <div className={`${t.adBg} rounded-lg flex items-center justify-center mb-5 sm:mb-6`} style={{ height: '80px' }}>
+              <div className={`${t.adBg} rounded-lg flex items-center justify-center mb-4 sm:mb-5`} style={{ height: '80px' }}>
                 <span className={`${t.faint} text-xs`}>Ad</span>
               </div>
 
               {/* Violations */}
               {selectedRestaurant.violations.length > 0 ? (
                 <div>
-                  <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4 flex items-center gap-2">
+                  <h3 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600" />
                     {selectedRestaurant.violations.length} Violation{selectedRestaurant.violations.length > 1 ? 's' : ''} Found
                   </h3>
@@ -1154,9 +1166,9 @@ export default function RestaurantHealthScores() {
                   </div>
                 </div>
               ) : (
-                <div className={`${darkMode ? 'bg-emerald-900/20 border-emerald-800' : 'bg-emerald-50 border-emerald-200'} border rounded-xl p-6 sm:p-8 text-center`}>
-                  <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-emerald-600 mx-auto mb-3 sm:mb-4" />
-                  <h3 className="font-bold text-emerald-600 text-lg sm:text-xl mb-2">Perfect Inspection!</h3>
+                <div className={`${darkMode ? 'bg-emerald-900/20 border-emerald-800' : 'bg-emerald-50 border-emerald-200'} border rounded-xl p-4 sm:p-6 lg:p-8 text-center`}>
+                  <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-emerald-600 mx-auto mb-2 sm:mb-3 lg:mb-4" />
+                  <h3 className="font-bold text-emerald-600 text-base sm:text-lg lg:text-xl mb-2">Perfect Inspection!</h3>
                   <p className={`${darkMode ? 'text-emerald-700' : 'text-emerald-600'} text-xs sm:text-sm`}>
                     Zero violations found during the most recent health inspection.
                   </p>
