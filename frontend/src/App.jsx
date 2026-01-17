@@ -445,7 +445,7 @@ export default function RestaurantHealthScores() {
             {/* Data attribution */}
             <div className="flex items-center justify-center gap-2 text-sm">
               <div className="flex items-center gap-1.5">
-                <div className={`w-2 h-2 ${darkMode ? 'bg-emerald-500' : 'bg-emerald-600'} rounded-full`}></div>
+                <div className={`w-2 h-2 ${darkMode ? 'bg-emerald-500' : 'bg-emerald-600'} rounded-full flex-shrink-0`}></div>
                 <span className={t.muted}>Data updated {lastDataUpdate}</span>
               </div>
               <span className={t.faint}>•</span>
@@ -453,10 +453,10 @@ export default function RestaurantHealthScores() {
                 href="https://health.baltimorecity.gov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${t.subtle} hover:${t.text} transition flex items-center gap-1`}
+                className={`${t.subtle} hover:${t.text} transition flex items-center gap-1.5`}
               >
                 Source: Baltimore Health Dept
-                <ExternalLink className="w-3 h-3" />
+                <ExternalLink className="w-3 h-3 flex-shrink-0" />
               </a>
             </div>
           </div>
@@ -477,28 +477,28 @@ export default function RestaurantHealthScores() {
         
         {/* Featured - Highest/Lowest */}
         {lowestRated && highestRated && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-8">
             {/* Highest Rated */}
             <div
               onClick={() => setSelectedRestaurant(highestRated)}
-              className={`${t.card} border-2 ${getStarColor(highestRated.starRating).border} rounded-xl p-5 sm:p-6 cursor-pointer transition ${t.cardHover}`}
+              className={`${t.card} border-2 ${getStarColor(highestRated.starRating).border} rounded-xl p-3 sm:p-6 cursor-pointer transition ${t.cardHover}`}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-2 text-emerald-600">
-                  <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">Highest Rated</span>
+              <div className="flex items-start justify-between mb-2 sm:mb-4">
+                <div className="flex items-center gap-1 sm:gap-2 text-emerald-600">
+                  <TrendingUp className="w-3.5 h-3.5 sm:w-5 sm:h-5 flex-shrink-0" />
+                  <span className="text-[10px] sm:text-sm font-semibold uppercase tracking-tight sm:tracking-wide leading-tight">Highest Rated</span>
                 </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2">{highestRated.name}</h3>
-              <p className={`text-sm ${t.muted} mb-4`}>
+              <h3 className="text-sm sm:text-xl font-bold mb-1 sm:mb-2 line-clamp-2">{highestRated.name}</h3>
+              <p className={`text-xs sm:text-sm ${t.muted} mb-2 sm:mb-4 line-clamp-1`}>
                 {highestRated.cuisine !== 'Unknown' ? `${highestRated.cuisine} • ` : ''}{highestRated.neighborhood}
               </p>
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                 <StarDisplay stars={highestRated.starRating} size="xl" />
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-xl sm:text-2xl font-bold">{highestRated.starRating} Stars</span>
-                <div className={`text-sm ${t.muted}`}>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0">
+                <span className="text-base sm:text-2xl font-bold">{highestRated.starRating} Stars</span>
+                <div className={`text-xs sm:text-sm ${t.muted}`}>
                   {highestRated.violations.length === 0 ? '✓ Zero violations' : `${highestRated.violations.length} violation${highestRated.violations.length > 1 ? 's' : ''}`}
                 </div>
               </div>
@@ -507,24 +507,24 @@ export default function RestaurantHealthScores() {
             {/* Lowest Rated */}
             <div
               onClick={() => setSelectedRestaurant(lowestRated)}
-              className={`${t.card} border-2 ${getStarColor(lowestRated.starRating).border} rounded-xl p-5 sm:p-6 cursor-pointer transition ${t.cardHover}`}
+              className={`${t.card} border-2 ${getStarColor(lowestRated.starRating).border} rounded-xl p-3 sm:p-6 cursor-pointer transition ${t.cardHover}`}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-2 text-red-600">
-                  <TrendingDown className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">Needs Attention</span>
+              <div className="flex items-start justify-between mb-2 sm:mb-4">
+                <div className="flex items-center gap-1 sm:gap-2 text-red-600">
+                  <TrendingDown className="w-3.5 h-3.5 sm:w-5 sm:h-5 flex-shrink-0" />
+                  <span className="text-[10px] sm:text-sm font-semibold uppercase tracking-tight sm:tracking-wide leading-tight">Needs Attention</span>
                 </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2">{lowestRated.name}</h3>
-              <p className={`text-sm ${t.muted} mb-4`}>
+              <h3 className="text-sm sm:text-xl font-bold mb-1 sm:mb-2 line-clamp-2">{lowestRated.name}</h3>
+              <p className={`text-xs sm:text-sm ${t.muted} mb-2 sm:mb-4 line-clamp-1`}>
                 {lowestRated.cuisine !== 'Unknown' ? `${lowestRated.cuisine} • ` : ''}{lowestRated.neighborhood}
               </p>
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                 <StarDisplay stars={lowestRated.starRating} size="xl" />
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-xl sm:text-2xl font-bold">{lowestRated.starRating} Star{lowestRated.starRating !== 1 ? 's' : ''}</span>
-                <div className={`text-sm ${t.muted}`}>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0">
+                <span className="text-base sm:text-2xl font-bold">{lowestRated.starRating} Star{lowestRated.starRating !== 1 ? 's' : ''}</span>
+                <div className={`text-xs sm:text-sm ${t.muted}`}>
                   {lowestRated.violations.length} violation{lowestRated.violations.length > 1 ? 's' : ''} found
                 </div>
               </div>
