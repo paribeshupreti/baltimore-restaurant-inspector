@@ -923,20 +923,20 @@ export default function Home({ darkMode, setDarkMode }) {
 
         {/* About Modal */}
         {showAboutModal && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50" onClick={() => setShowAboutModal(false)}>
-            <div className={`${t.card} border-2 ${t.border} rounded-2xl max-w-2xl w-full max-h-[90vh] shadow-2xl overflow-hidden flex flex-col`} onClick={(e) => e.stopPropagation()}>
-              <div className={`p-6 border-b ${t.border} flex-shrink-0`}>
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50" onClick={() => setShowAboutModal(false)}>
+            <div className={`${t.card} border-2 ${t.border} rounded-2xl max-w-2xl w-full max-h-[85vh] sm:max-h-[90vh] shadow-2xl overflow-hidden flex flex-col`} onClick={(e) => e.stopPropagation()}>
+              <div className={`p-4 sm:p-6 border-b ${t.border} flex-shrink-0`}>
                 <div className="flex justify-between items-center">
-                  <h2 className="text-2xl font-bold flex items-center gap-3">
-                    <Info className="w-6 h-6" />
+                  <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-2 sm:gap-3">
+                    <Info className="w-5 h-5 sm:w-6 sm:h-6" />
                     About Safety Ratings
                   </h2>
                   <button onClick={() => setShowAboutModal(false)} className={`${t.subtle} hover:${t.text} transition p-1`}>
-                    <X className="w-6 h-6" />
+                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
                   </button>
                 </div>
               </div>
-              <div className="p-6 space-y-6 overflow-y-auto flex-1">
+              <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto flex-1">
                 <div>
                   <h3 className="font-bold text-lg mb-3">Our Mission</h3>
                   <p className={t.muted}>
