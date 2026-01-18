@@ -1,7 +1,7 @@
 {
-  "name": "baltimore-restaurant-inspector-frontend",
+  "name": "safeeats-frontend",
   "version": "1.0.0",
-  "description": "React frontend for Baltimore Restaurant Health Scores",
+  "description": "SafeEats - Restaurant Health Inspection Ratings for Baltimore",
   "type": "module",
   "scripts": {
     "dev": "next dev",

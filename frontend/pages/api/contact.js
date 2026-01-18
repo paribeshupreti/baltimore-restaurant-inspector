@@ -38,14 +38,14 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from: 'Baltimore Restaurant Inspector <onboarding@resend.dev>',
+      from: 'SafeEats <onboarding@resend.dev>',
       to: process.env.CONTACT_EMAIL,
       replyTo: email,
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `New SafeEats Contact Form from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #059669; border-bottom: 2px solid #059669; padding-bottom: 10px;">
-            New Contact Form Submission
+            New SafeEats Contact Form Submission
           </h2>
 
           <div style="margin: 20px 0;">
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
           <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
 
           <p style="font-size: 12px; color: #9ca3af;">
-            Sent from Baltimore Restaurant Inspector contact form
+            Sent from SafeEats contact form (safeeats.io)
           </p>
         </div>
       `,
