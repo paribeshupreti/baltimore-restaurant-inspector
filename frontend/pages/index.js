@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { AlertTriangle, CheckCircle, Search, MapPin, Calendar, Clock, X, Award, Filter, ChevronDown, Sun, Moon, Mail, Info, Send, ExternalLink, TrendingDown, TrendingUp, Share2, Bell, Star } from 'lucide-react';
+import { getRestaurantSlug } from '../utils/slugify.js';
 
 // Helper function to map zipcode to neighborhood
 const zipcodeToNeighborhood = (zipcode) => {
@@ -33,10 +34,6 @@ const guessCuisine = (name) => {
   return 'Unknown';
 };
 
-// Generate URL slug from restaurant name
-const getRestaurantSlug = (name) => {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-};
 
 // Count violations by severity (don't count UNKNOWN severities in badges)
 const getViolationSeverityCounts = (violations) => {

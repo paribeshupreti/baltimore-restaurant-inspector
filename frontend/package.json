@@ -8,13 +8,17 @@
     "build": "node scripts/generate-sitemap.cjs && next build",
     "start": "next start",
     "export": "node scripts/generate-sitemap.cjs && next build",
-    "preview": "next start"
+    "preview": "next start",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
     "autoprefixer": "^10.4.23",
+    "jest": "^30.2.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19"
   },
