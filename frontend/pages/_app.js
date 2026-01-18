@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import { useEffect, useState } from 'react'
-import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 
 export default function App({ Component, pageProps }) {
   const [darkMode, setDarkMode] = useState(false)
@@ -18,8 +18,13 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <Script
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+        strategy="afterInteractive"
+      />
       <Component {...pageProps} darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Analytics />
     </>
   )
 }

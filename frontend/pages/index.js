@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { AlertTriangle, CheckCircle, Search, MapPin, Calendar, Clock, X, Award, Filter, ChevronDown, Sun, Moon, Mail, Info, Send, ExternalLink, TrendingDown, TrendingUp, Share2, Bell, Star } from 'lucide-react';
-import { track } from '@vercel/analytics';
 
 // Helper function to map zipcode to neighborhood
 const zipcodeToNeighborhood = (zipcode) => {
@@ -241,16 +240,28 @@ export default function Home({ darkMode, setDarkMode }) {
   useEffect(() => {
     if (searchTerm.trim() && searchTerm.length >= 2) {
       const timer = setTimeout(() => {
-        track('restaurant_search', {
-          query: searchTerm.trim(),
-          found: searchResults.length > 0,
-          result_count: searchResults.length
-        });
+        if (window.umami) {
+          window.umami.track('restaurant-search', {
+            query: searchTerm.trim(),
+            found: searchResults.length > 0,
+            result_count: searchResults.length,
+            search_type: /^\d+$/.test(searchTerm.trim()) ? 'zipcode' : 'name'
+          });
+        }
       }, 1000); // Wait 1 second after user stops typing
 
       return () => clearTimeout(timer);
     }
   }, [searchTerm, searchResults]);
+
+  // Track filter usage
+  useEffect(() => {
+    if (activeFilter !== 'all' && window.umami) {
+      window.umami.track('filter-applied', {
+        filter_type: activeFilter
+      });
+    }
+  }, [activeFilter]);
 
   const filteredRestaurants = useMemo(() => {
     if (restaurants.length === 0) return [];
@@ -463,7 +474,18 @@ export default function Home({ darkMode, setDarkMode }) {
                         <Link
                           key={r.id}
                           href={`/restaurants/${getRestaurantSlug(r.name)}`}
-                          onClick={() => { setShowDropdown(false); setSearchTerm(''); }}
+                          onClick={() => {
+                            setShowDropdown(false);
+                            setSearchTerm('');
+                            if (window.umami) {
+                              window.umami.track('restaurant-click', {
+                                restaurant_name: r.name,
+                                star_rating: r.starRating,
+                                violation_count: r.violations.length,
+                                source: 'search'
+                              });
+                            }
+                          }}
                           className={`flex items-center gap-3 sm:gap-4 p-4 sm:p-4 ${darkMode ? 'hover:bg-slate-700' : 'hover:bg-slate-50'} cursor-pointer border-b ${t.borderLight} last:border-b-0 transition active:scale-98`}
                         >
                           <div className="flex flex-col items-center flex-shrink-0">
@@ -521,6 +543,16 @@ export default function Home({ darkMode, setDarkMode }) {
               {/* Highest Rated */}
               <Link
                 href={`/restaurants/${getRestaurantSlug(highestRated.name)}`}
+                onClick={() => {
+                  if (umami) {
+                    umami.track('restaurant-click', {
+                      restaurant_name: highestRated.name,
+                      star_rating: highestRated.starRating,
+                      violation_count: highestRated.violations.length,
+                      source: 'featured-highest'
+                    });
+                  }
+                }}
                 className={`${t.card} border-2 ${getStarColor(highestRated.starRating).border} rounded-xl p-3 sm:p-6 cursor-pointer transition ${t.cardHover}`}
               >
                 <div className="flex items-start justify-between mb-2 sm:mb-4">
@@ -547,6 +579,16 @@ export default function Home({ darkMode, setDarkMode }) {
               {/* Lowest Rated */}
               <Link
                 href={`/restaurants/${getRestaurantSlug(lowestRated.name)}`}
+                onClick={() => {
+                  if (umami) {
+                    umami.track('restaurant-click', {
+                      restaurant_name: lowestRated.name,
+                      star_rating: lowestRated.starRating,
+                      violation_count: lowestRated.violations.length,
+                      source: 'featured-lowest'
+                    });
+                  }
+                }}
                 className={`${t.card} border-2 ${getStarColor(lowestRated.starRating).border} rounded-xl p-3 sm:p-6 cursor-pointer transition ${t.cardHover}`}
               >
                 <div className="flex items-start justify-between mb-2 sm:mb-4">
@@ -684,6 +726,16 @@ export default function Home({ darkMode, setDarkMode }) {
                           {/* Stars - Big and prominent on mobile */}
                           <Link
                             href={`/restaurants/${getRestaurantSlug(r.name)}`}
+                            onClick={() => {
+                              if (umami) {
+                                umami.track('restaurant-click', {
+                                  restaurant_name: r.name,
+                                  star_rating: r.starRating,
+                                  violation_count: r.violations.length,
+                                  source: 'restaurant-list'
+                                });
+                              }
+                            }}
                             className="cursor-pointer block"
                           >
                             <div className="flex items-center gap-2 mb-2">
