@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { AlertTriangle, CheckCircle, Search, MapPin, Calendar, Clock, X, Award, Filter, ChevronDown, Sun, Moon, Mail, Info, Send, ExternalLink, TrendingDown, TrendingUp, Share2, Bell, Star } from 'lucide-react';
+import { track } from '@vercel/analytics';
 
 // Helper function to map zipcode to neighborhood
 const zipcodeToNeighborhood = (zipcode) => {
@@ -241,6 +242,21 @@ export default function Home({ darkMode, setDarkMode }) {
       }
     }).slice(0, 5);
   }, [searchTerm, restaurants]);
+
+  // Track restaurant searches for analytics
+  useEffect(() => {
+    if (searchTerm.trim() && searchTerm.length >= 2) {
+      const timer = setTimeout(() => {
+        track('restaurant_search', {
+          query: searchTerm.trim(),
+          found: searchResults.length > 0,
+          result_count: searchResults.length
+        });
+      }, 1000); // Wait 1 second after user stops typing
+
+      return () => clearTimeout(timer);
+    }
+  }, [searchTerm, searchResults]);
 
   const filteredRestaurants = useMemo(() => {
     if (restaurants.length === 0) return [];
