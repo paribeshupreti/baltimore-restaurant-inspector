@@ -170,6 +170,10 @@ export default function Home({ darkMode, setDarkMode }) {
   const [showShareToast, setShowShareToast] = useState(false);
   const [showAlertsModal, setShowAlertsModal] = useState(false);
   const [displayCount, setDisplayCount] = useState(5);
+  const [requestLoading, setRequestLoading] = useState(false);
+  const [showRequestToast, setShowRequestToast] = useState(false);
+  const [showRequestConfirm, setShowRequestConfirm] = useState(false);
+  const [pendingRequest, setPendingRequest] = useState('');
   const searchRef = useRef(null);
 
   // Load restaurant data from JSON file
@@ -207,7 +211,7 @@ export default function Home({ darkMode, setDarkMode }) {
 
   // Lock body scroll when modal is open
   useEffect(() => {
-    if (showAlertsModal || showAboutModal || showContactModal) {
+    if (showAlertsModal || showAboutModal || showContactModal || showRequestConfirm) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -215,7 +219,7 @@ export default function Home({ darkMode, setDarkMode }) {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [showAlertsModal, showAboutModal, showContactModal]);
+  }, [showAlertsModal, showAboutModal, showContactModal, showRequestConfirm]);
 
   const searchResults = useMemo(() => {
     if (!searchTerm.trim() || searchTerm.length < 2 || restaurants.length === 0) return [];
@@ -354,6 +358,55 @@ export default function Home({ darkMode, setDarkMode }) {
     }
   };
 
+  const handleRestaurantRequest = () => {
+    // Store the search term and show confirmation modal
+    setPendingRequest(searchTerm.trim());
+    setShowRequestConfirm(true);
+  };
+
+  const confirmRestaurantRequest = async () => {
+    if (requestLoading) return; // Prevent duplicate clicks
+
+    setRequestLoading(true);
+    setShowRequestConfirm(false);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Anonymous User',
+          email: 'noreply@safeeats.io',
+          message: `Restaurant Request: "${pendingRequest}"\n\nA user searched for this restaurant but couldn't find it in the database.`
+        }),
+      });
+
+      if (!response.ok) throw new Error('Failed to send request');
+
+      // Track with Umami
+      if (window.umami) {
+        window.umami.track('restaurant-request-submitted', {
+          query: pendingRequest,
+          search_type: /^\d+$/.test(pendingRequest) ? 'zipcode' : 'name'
+        });
+      }
+
+      // Show success toast
+      setShowRequestToast(true);
+      setTimeout(() => setShowRequestToast(false), 3000);
+
+      // Close dropdown and clear search
+      setShowDropdown(false);
+      setSearchTerm('');
+      setPendingRequest('');
+    } catch (error) {
+      console.error('Error submitting request:', error);
+      alert('Failed to submit request. Please try again.');
+    } finally {
+      setRequestLoading(false);
+    }
+  };
+
   const t = {
     bg: darkMode ? 'bg-slate-900' : 'bg-slate-50',
     text: darkMode ? 'text-slate-50' : 'text-slate-900',
@@ -389,23 +442,24 @@ export default function Home({ darkMode, setDarkMode }) {
   return (
     <>
       <Head>
-        <title>Baltimore Restaurant Health Inspections | Safety Ratings</title>
-        <meta name="description" content="Check health inspection ratings for Baltimore restaurants. Safety scores based on official Baltimore City Health Department data. Updated Jan 15, 2026." />
-        <meta name="keywords" content="Baltimore restaurants, health inspections, food safety, restaurant ratings, Baltimore dining, health department" />
+        <title>SafeEats Baltimore | Restaurant Health Inspection Ratings</title>
+        <meta name="description" content="Check health inspection ratings for Baltimore restaurants. Real-time safety scores based on official Baltimore City Health Department data. Find safe dining options near you." />
+        <meta name="keywords" content="Baltimore restaurants, health inspections, food safety, restaurant ratings, Baltimore dining, safe restaurants, SafeEats" />
 
         {/* Open Graph */}
-        <meta property="og:title" content="Baltimore Restaurant Health Inspections" />
-        <meta property="og:description" content="Check health inspection ratings for Baltimore restaurants based on official city data." />
+        <meta property="og:title" content="SafeEats Baltimore | Restaurant Health Inspections" />
+        <meta property="og:description" content="Check health inspection ratings for Baltimore restaurants based on official city data. Find safe dining options near you." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourdomain.com" />
+        <meta property="og:url" content="https://safeeats.io" />
+        <meta property="og:site_name" content="SafeEats" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Baltimore Restaurant Health Inspections" />
+        <meta name="twitter:title" content="SafeEats Baltimore | Restaurant Health Inspections" />
         <meta name="twitter:description" content="Check health inspection ratings for Baltimore restaurants based on official city data." />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://yourdomain.com" />
+        <link rel="canonical" href="https://safeeats.io" />
       </Head>
 
       <div className={`min-h-screen ${t.bg} ${t.text}`}>
@@ -417,8 +471,8 @@ export default function Home({ darkMode, setDarkMode }) {
                 <Star className={`w-5 h-5 text-emerald-400 fill-current`} />
               </div>
               <div>
-                <h1 className="font-semibold text-base sm:text-lg">Baltimore Health Inspections</h1>
-                <p className={`text-xs ${t.faint} hidden sm:block`}>Safety ratings from official data</p>
+                <h1 className="font-semibold text-base sm:text-lg">SafeEats Baltimore</h1>
+                <p className={`text-xs ${t.faint} hidden sm:block`}>Restaurant Health Inspections</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -506,7 +560,17 @@ export default function Home({ darkMode, setDarkMode }) {
                     }) : (
                       <div className="p-6 text-center">
                         <p className={t.muted}>No restaurants found for "{searchTerm}"</p>
-                        <p className={`${t.faint} text-sm mt-1`}>Try searching by restaurant name or zip code</p>
+                        <p className={`${t.faint} text-sm mt-2 mb-4`}>Try searching by restaurant name or zip code</p>
+
+                        <button
+                          onClick={handleRestaurantRequest}
+                          className={`mt-2 flex items-center justify-center gap-2 mx-auto px-4 py-2.5 ${
+                            darkMode ? 'bg-emerald-700 hover:bg-emerald-600' : 'bg-emerald-600 hover:bg-emerald-700'
+                          } text-white rounded-lg font-medium transition text-sm`}
+                        >
+                          <Send className="w-4 h-4" />
+                          Request to add this
+                        </button>
                       </div>
                     )}
                   </div>
@@ -1170,6 +1234,16 @@ export default function Home({ darkMode, setDarkMode }) {
           </div>
         )}
 
+        {/* Request Toast Notification */}
+        {showRequestToast && (
+          <div className="fixed bottom-8 right-8 z-50">
+            <div className={`${darkMode ? 'bg-slate-700' : 'bg-slate-800'} text-white px-6 py-3 rounded-lg shadow-2xl flex items-center gap-3 transition-all`}>
+              <CheckCircle className="w-5 h-5 text-emerald-400" />
+              <span className="font-medium">Request sent! We'll add it soon.</span>
+            </div>
+          </div>
+        )}
+
         {/* Subscribe to Alerts Modal */}
         {showAlertsModal && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50" onClick={() => setShowAlertsModal(false)}>
@@ -1194,6 +1268,49 @@ export default function Home({ darkMode, setDarkMode }) {
                   <p className={`${t.muted} max-w-sm mx-auto`}>
                     We're working on a notification system that will alert you when your favorite restaurants are re-inspected or when ratings change. Check back soon for updates!
                   </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Restaurant Request Confirmation Modal */}
+        {showRequestConfirm && (
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50" onClick={() => { setShowRequestConfirm(false); setPendingRequest(''); }}>
+            <div className={`${t.card} border-2 ${t.border} rounded-2xl max-w-md w-full shadow-2xl overflow-hidden`} onClick={(e) => e.stopPropagation()}>
+              <div className={`p-6 border-b ${t.border}`}>
+                <h2 className="text-xl font-bold">Request Restaurant</h2>
+              </div>
+              <div className="p-6">
+                <p className={`${t.text} mb-2`}>
+                  Want us to add <strong className="text-emerald-600">"{pendingRequest}"</strong> to our database?
+                </p>
+                <p className={`${t.muted} text-sm mb-6`}>
+                  We'll add it in the next update if it's a Baltimore restaurant.
+                </p>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => { setShowRequestConfirm(false); setPendingRequest(''); }}
+                    className={`flex-1 px-4 py-3 ${darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-100 hover:bg-slate-200'} ${t.text} rounded-lg font-medium transition`}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={confirmRestaurantRequest}
+                    disabled={requestLoading}
+                    className={`flex-1 px-4 py-3 ${darkMode ? 'bg-emerald-700 hover:bg-emerald-600' : 'bg-emerald-600 hover:bg-emerald-700'} text-white rounded-lg font-semibold transition flex items-center justify-center gap-2 ${
+                      requestLoading ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    {requestLoading ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      'Yes, request it'
+                    )}
+                  </button>
                 </div>
               </div>
             </div>

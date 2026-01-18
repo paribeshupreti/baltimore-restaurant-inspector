@@ -213,30 +213,31 @@ export default function RestaurantPage({ restaurant, darkMode, setDarkMode }) {
     }
   };
 
-  const pageTitle = `${restaurant.name} - Health Inspection ${restaurant.starRating} Stars | Baltimore`;
+  const pageTitle = `${restaurant.name} - ${restaurant.starRating} Star Health Rating | SafeEats Baltimore`;
   const pageDescription = violationCount === 0
-    ? `${restaurant.name} has a perfect 5-star health inspection rating with zero violations. View the latest Baltimore Health Department inspection report.`
-    : `${restaurant.name} has a ${restaurant.starRating}-star health inspection rating with ${violationCount} violation${violationCount > 1 ? 's' : ''}. View the latest Baltimore Health Department inspection report.`;
+    ? `${restaurant.name} has a perfect 5-star health inspection rating with zero violations. View the latest Baltimore Health Department inspection report on SafeEats.`
+    : `${restaurant.name} has a ${restaurant.starRating}-star health inspection rating with ${violationCount} violation${violationCount > 1 ? 's' : ''}. View the latest Baltimore Health Department inspection report on SafeEats.`;
 
   return (
     <>
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={`${restaurant.name}, Baltimore restaurant, health inspection, food safety, ${restaurant.neighborhood}`} />
+        <meta name="keywords" content={`${restaurant.name}, Baltimore restaurant, health inspection, food safety, ${restaurant.neighborhood}, SafeEats`} />
 
         {/* Open Graph */}
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="restaurant" />
-        <meta property="og:url" content={`https://yourdomain.com/restaurants/${restaurant.slug}`} />
+        <meta property="og:url" content={`https://safeeats.io/restaurants/${restaurant.slug}`} />
+        <meta property="og:site_name" content="SafeEats" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
 
-        <link rel="canonical" content={`https://yourdomain.com/restaurants/${restaurant.slug}`} />
+        <link rel="canonical" href={`https://safeeats.io/restaurants/${restaurant.slug}`} />
 
         {/* Structured Data */}
         <script
