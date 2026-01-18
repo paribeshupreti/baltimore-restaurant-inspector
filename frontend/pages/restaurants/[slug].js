@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { AlertTriangle, CheckCircle, MapPin, Calendar, X, Star, Share2, Home, ArrowLeft, Mail, Send } from 'lucide-react';
 import fs from 'fs';
 import path from 'path';
+import { getRestaurantSlug } from '../../utils/slugify.js';
 
 // Helper functions
 const getStarLabel = (stars) => {
@@ -489,7 +490,7 @@ export async function getStaticPaths() {
 
   const paths = restaurants.map((restaurant) => ({
     params: {
-      slug: restaurant.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+      slug: getRestaurantSlug(restaurant.name)
     }
   }));
 
