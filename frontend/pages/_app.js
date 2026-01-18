@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import { useEffect, useState } from 'react'
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics } from '@vercel/analytics/next'
 
 export default function App({ Component, pageProps }) {
   const [darkMode, setDarkMode] = useState(false)
