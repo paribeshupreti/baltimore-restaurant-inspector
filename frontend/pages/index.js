@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { AlertTriangle, CheckCircle, Search, MapPin, Calendar, Clock, X, Award, Filter, ChevronDown, Sun, Moon, Mail, Info, Send, ExternalLink, TrendingDown, TrendingUp, Share2, Bell, Star } from 'lucide-react';
 import { track } from '@vercel/analytics';
@@ -31,6 +32,11 @@ const guessCuisine = (name) => {
   if (nameLower.includes('burger')) return 'American';
   if (nameLower.includes('grill')) return 'American';
   return 'Unknown';
+};
+
+// Generate URL slug from restaurant name
+const getRestaurantSlug = (name) => {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 };
 
 // Count violations by severity (don't count UNKNOWN severities in badges)
@@ -72,17 +78,6 @@ const getStarRating = (violationCount) => {
   if (violationCount <= 4) return 3;
   if (violationCount <= 7) return 2;
   return 1;
-};
-
-const getStarLabel = (stars) => {
-  const labels = {
-    5: "Perfect",
-    4: "Excellent",
-    3: "Good",
-    2: "Fair",
-    1: "Poor"
-  };
-  return labels[stars] || "Unknown";
 };
 
 const getStarColor = (stars) => {
@@ -160,7 +155,6 @@ const StarDisplay = ({ stars, size = "md", showEmpty = true }) => {
 
 export default function Home({ darkMode, setDarkMode }) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
@@ -214,7 +208,7 @@ export default function Home({ darkMode, setDarkMode }) {
 
   // Lock body scroll when modal is open
   useEffect(() => {
-    if (selectedRestaurant || showAlertsModal || showAboutModal || showContactModal) {
+    if (showAlertsModal || showAboutModal || showContactModal) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -222,7 +216,7 @@ export default function Home({ darkMode, setDarkMode }) {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [selectedRestaurant, showAlertsModal, showAboutModal, showContactModal]);
+  }, [showAlertsModal, showAboutModal, showContactModal]);
 
   const searchResults = useMemo(() => {
     if (!searchTerm.trim() || searchTerm.length < 2 || restaurants.length === 0) return [];
@@ -466,9 +460,10 @@ export default function Home({ darkMode, setDarkMode }) {
                     {searchResults.length > 0 ? searchResults.map((r) => {
                       const stars = r.starRating;
                       return (
-                        <div
+                        <Link
                           key={r.id}
-                          onClick={() => { setSelectedRestaurant(r); setShowDropdown(false); setSearchTerm(''); }}
+                          href={`/restaurants/${getRestaurantSlug(r.name)}`}
+                          onClick={() => { setShowDropdown(false); setSearchTerm(''); }}
                           className={`flex items-center gap-3 sm:gap-4 p-4 sm:p-4 ${darkMode ? 'hover:bg-slate-700' : 'hover:bg-slate-50'} cursor-pointer border-b ${t.borderLight} last:border-b-0 transition active:scale-98`}
                         >
                           <div className="flex flex-col items-center flex-shrink-0">
@@ -484,7 +479,7 @@ export default function Home({ darkMode, setDarkMode }) {
                           <div className="text-right flex-shrink-0">
                             <div className={`text-xs ${t.muted} whitespace-nowrap`}>{r.violations.length} violation{r.violations.length !== 1 ? 's' : ''}</div>
                           </div>
-                        </div>
+                        </Link>
                       );
                     }) : (
                       <div className="p-6 text-center">
@@ -524,8 +519,8 @@ export default function Home({ darkMode, setDarkMode }) {
           {lowestRated && highestRated && (
             <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-8">
               {/* Highest Rated */}
-              <div
-                onClick={() => setSelectedRestaurant(highestRated)}
+              <Link
+                href={`/restaurants/${getRestaurantSlug(highestRated.name)}`}
                 className={`${t.card} border-2 ${getStarColor(highestRated.starRating).border} rounded-xl p-3 sm:p-6 cursor-pointer transition ${t.cardHover}`}
               >
                 <div className="flex items-start justify-between mb-2 sm:mb-4">
@@ -547,11 +542,11 @@ export default function Home({ darkMode, setDarkMode }) {
                     {highestRated.violations.length === 0 ? '✓ Zero violations' : `${highestRated.violations.length} violation${highestRated.violations.length > 1 ? 's' : ''}`}
                   </div>
                 </div>
-              </div>
+              </Link>
 
               {/* Lowest Rated */}
-              <div
-                onClick={() => setSelectedRestaurant(lowestRated)}
+              <Link
+                href={`/restaurants/${getRestaurantSlug(lowestRated.name)}`}
                 className={`${t.card} border-2 ${getStarColor(lowestRated.starRating).border} rounded-xl p-3 sm:p-6 cursor-pointer transition ${t.cardHover}`}
               >
                 <div className="flex items-start justify-between mb-2 sm:mb-4">
@@ -573,7 +568,7 @@ export default function Home({ darkMode, setDarkMode }) {
                     {lowestRated.violations.length} violation{lowestRated.violations.length > 1 ? 's' : ''} found
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           )}
 
@@ -687,9 +682,9 @@ export default function Home({ darkMode, setDarkMode }) {
                         {/* Mobile: Stack everything vertically for clarity */}
                         <div className="space-y-3">
                           {/* Stars - Big and prominent on mobile */}
-                          <div
-                            className="cursor-pointer"
-                            onClick={() => setSelectedRestaurant(r)}
+                          <Link
+                            href={`/restaurants/${getRestaurantSlug(r.name)}`}
+                            className="cursor-pointer block"
                           >
                             <div className="flex items-center gap-2 mb-2">
                               <StarDisplay stars={stars} size="lg" />
@@ -703,7 +698,7 @@ export default function Home({ darkMode, setDarkMode }) {
                             <p className={`text-sm ${t.muted}`}>
                               {r.cuisine !== 'Unknown' ? `${r.cuisine} • ` : ''}{r.neighborhood}
                             </p>
-                          </div>
+                          </Link>
 
                           {/* Violation Badge - Full width on mobile */}
                           <div className="flex flex-col gap-2">
@@ -1106,116 +1101,6 @@ export default function Home({ darkMode, setDarkMode }) {
                     <CheckCircle className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
                     <h3 className="text-xl font-bold mb-2">Message Sent</h3>
                     <p className={t.muted}>Thank you for contacting us. We'll respond as soon as possible.</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Restaurant Detail Modal */}
-        {selectedRestaurant && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50 overflow-y-auto" onClick={() => setSelectedRestaurant(null)}>
-            <div className={`${t.card} border-2 ${t.border} rounded-2xl max-w-2xl w-full max-h-[80vh] sm:max-h-[85vh] flex flex-col shadow-2xl my-auto overflow-hidden`} onClick={(e) => e.stopPropagation()}>
-              {/* Header with Stars - Fixed */}
-              <div className={`${getStarColor(selectedRestaurant.starRating).lightBg} ${darkMode ? getStarColor(selectedRestaurant.starRating).darkBg : ''} p-4 sm:p-6 lg:p-8 text-center relative border-b-4 ${getStarColor(selectedRestaurant.starRating).border} flex-shrink-0 rounded-t-2xl`}>
-                <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex items-center gap-2">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleShare(selectedRestaurant);
-                    }}
-                    className={`p-2 rounded-lg backdrop-blur-sm transition ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-white/50 hover:bg-white/80'}`}
-                    title="Share restaurant"
-                  >
-                    <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </button>
-                  <button
-                    onClick={() => setSelectedRestaurant(null)}
-                    className={`p-2 rounded-lg backdrop-blur-sm transition ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-white/50 hover:bg-white/80'}`}
-                  >
-                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </button>
-                </div>
-                <div className="flex justify-center mb-2 sm:mb-3">
-                  <StarDisplay stars={selectedRestaurant.starRating} size="lg" />
-                </div>
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">{selectedRestaurant.starRating} Stars</div>
-                <div className={`text-sm sm:text-base lg:text-lg font-medium ${getStarColor(selectedRestaurant.starRating).text}`}>
-                  {getStarLabel(selectedRestaurant.starRating)} Safety Rating
-                </div>
-              </div>
-
-              {/* Content - Scrollable */}
-              <div className="p-4 sm:p-6 lg:p-8 overflow-y-auto flex-1">
-                <div className="mb-4 sm:mb-5">
-                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">{selectedRestaurant.name}</h2>
-                  <p className={`${t.muted} mb-3 sm:mb-4 text-xs sm:text-sm lg:text-base`}>{selectedRestaurant.address}</p>
-                  <div className={`flex flex-wrap gap-2 sm:gap-3 lg:gap-4 text-xs sm:text-sm ${t.muted}`}>
-                    <span className="flex items-center gap-1.5">
-                      <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
-                      {selectedRestaurant.neighborhood}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                      <span className="hidden sm:inline">Inspected </span>
-                      {new Date(selectedRestaurant.lastInspection).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Ad Space in Modal */}
-                <div className={`${t.adBg} rounded-lg flex items-center justify-center mb-4 sm:mb-5`} style={{ height: '80px' }}>
-                  <span className={`${t.faint} text-xs`}>Ad</span>
-                </div>
-
-                {/* Violations */}
-                {selectedRestaurant.violations.length > 0 ? (
-                  <div>
-                    <h3 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 flex items-center gap-2">
-                      <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600" />
-                      {selectedRestaurant.violations.length} Violation{selectedRestaurant.violations.length > 1 ? 's' : ''} Found
-                    </h3>
-                    <div className="space-y-2 sm:space-y-3">
-                      {selectedRestaurant.violations.map((v, i) => {
-                        const bullets = v.summary_bullets || [typeof v === 'string' ? v : v.description];
-                        const severity = typeof v === 'object' ? v.severity : null;
-                        // Only show severity badge for known severities (not UNKNOWN)
-                        const showSeverityBadge = severity && !severity.includes('UNKNOWN');
-
-                        return (
-                          <div
-                            key={i}
-                            className={`${darkMode ? 'bg-red-900/20 border-red-800' : 'bg-red-50 border-red-200'} border rounded-lg p-3 sm:p-4`}
-                          >
-                            {showSeverityBadge && (
-                              <span className={`inline-block px-2 py-1 rounded text-xs font-semibold mb-2 ${
-                                severity === 'SEVERE' ? 'bg-red-600 text-white' :
-                                severity === 'MAJOR' ? 'bg-orange-600 text-white' :
-                                severity === 'MODERATE' ? 'bg-yellow-600 text-white' :
-                                severity === 'MINOR' ? 'bg-blue-600 text-white' :
-                                'bg-gray-600 text-white'
-                              }`}>
-                                {severity}
-                              </span>
-                            )}
-                            <ul className={`list-disc list-inside space-y-1 text-xs sm:text-sm ${darkMode ? 'text-red-200' : 'text-red-800'}`}>
-                              {bullets.map((bullet, idx) => (
-                                <li key={idx} className="leading-relaxed">{bullet}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ) : (
-                  <div className={`${darkMode ? 'bg-emerald-900/20 border-emerald-800' : 'bg-emerald-50 border-emerald-200'} border rounded-xl p-4 sm:p-6 lg:p-8 text-center`}>
-                    <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-emerald-600 mx-auto mb-2 sm:mb-3 lg:mb-4" />
-                    <h3 className="font-bold text-emerald-600 text-base sm:text-lg lg:text-xl mb-2">Perfect Inspection!</h3>
-                    <p className={`${darkMode ? 'text-emerald-700' : 'text-emerald-600'} text-xs sm:text-sm`}>
-                      Zero violations found during the most recent health inspection.
-                    </p>
                   </div>
                 )}
               </div>
