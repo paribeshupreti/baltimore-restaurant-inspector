@@ -140,6 +140,10 @@ RESTAURANT_NAME_MAP = {
     "Golden West Cafe": "GOLDEN WEST CAFÉ",
     "The Rusty Scupper": "RUSTY SCUPPER",
 
+    #Newly added
+    "Bayside Cantina": "BAYSIDE CANTINA",
+    "Carlos O'Charlies": "CARLOS O'CHARLIES",
+
     # Add more mappings as you discover them from analytics
     # Format: "Display Name": "Portal Name",
 }

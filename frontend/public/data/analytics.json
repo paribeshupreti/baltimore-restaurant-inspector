@@ -1,14 +1,14 @@
 {
   "metadata": {
     "created": "2025-12-22T13:42:03.924345",
-    "last_updated": "2026-01-16T18:47:53.984042",
-    "total_sessions": 6,
-    "total_searches": 103
+    "last_updated": "2026-09-13T12:49:17.878716",
+    "total_sessions": 7,
+    "total_searches": 170
   },
   "restaurant_searches": {
     "Faidley's Seafood": {
-      "search_count": 6,
-      "last_searched": "2026-01-16T18:45:54.837660",
+      "search_count": 7,
+      "last_searched": "2026-09-13T12:48:03.381638",
       "status": "successfully_scraped",
       "first_success": "2025-12-28T12:23:11.642238",
       "last_success": "2026-01-16T18:46:09.730462",
@@ -31,8 +31,8 @@
       }
     },
     "The Food Market": {
-      "search_count": 6,
-      "last_searched": "2026-01-16T18:36:07.582502",
+      "search_count": 7,
+      "last_searched": "2026-09-13T12:35:19.684834",
       "status": "successfully_scraped",
       "first_success": "2025-12-28T12:23:28.786708",
       "last_success": "2026-01-16T18:36:22.836963",
@@ -51,8 +51,8 @@
       }
     },
     "Ekiben": {
-      "search_count": 5,
-      "last_searched": "2026-01-16T18:36:26.955353",
+      "search_count": 6,
+      "last_searched": "2026-09-13T12:35:54.801093",
       "status": "successfully_scraped",
       "first_success": "2025-12-28T12:23:45.970615",
       "last_success": "2026-01-16T18:36:41.845820",
@@ -71,30 +71,48 @@
       }
     },
     "Clavel": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:36:24.949613",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:35:20.691231",
       "status": "successfully_scraped",
       "first_success": "2025-12-22T14:31:43.732496",
-      "last_success": "2025-12-22T14:31:43.732496",
+      "last_success": "2026-09-13T12:35:35.881085",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
-      "notes": []
+      "notes": [],
+      "violations_count": 1,
+      "star_rating": 4,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 0,
+        "MODERATE": 1,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
     },
     "Thames Street Oyster House": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:36:25.950570",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:35:37.991291",
       "status": "successfully_scraped",
       "first_success": "2025-12-22T14:32:00.812737",
-      "last_success": "2025-12-22T14:32:00.812737",
+      "last_success": "2026-09-13T12:35:52.689968",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
-      "notes": []
+      "notes": [],
+      "violations_count": 1,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 1,
+        "MAJOR": 0,
+        "MODERATE": 0,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
     },
     "LP Steamers": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:46:11.850235",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:48:04.392369",
       "status": "previously_failed_now_success",
       "first_success": "2026-01-16T18:46:26.531262",
       "last_success": "2026-01-16T18:46:26.531262",
@@ -117,19 +135,28 @@
       }
     },
     "The Charmery": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:36:43.969515",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:35:55.804653",
       "status": "successfully_scraped",
       "first_success": "2025-12-22T14:32:28.919743",
-      "last_success": "2025-12-22T14:32:28.919743",
+      "last_success": "2026-09-13T12:36:10.559028",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
-      "notes": []
+      "notes": [],
+      "violations_count": 2,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 1,
+        "MAJOR": 0,
+        "MODERATE": 0,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
     },
     "Miss Shirley's Cafe": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:46:28.660408",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:48:05.399815",
       "status": "previously_failed_now_success",
       "first_success": "2026-01-16T18:46:43.396918",
       "last_success": "2026-01-16T18:46:43.396918",
@@ -152,11 +179,11 @@
       }
     },
     "The Helmand": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:36:44.975286",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:36:12.670925",
       "status": "successfully_scraped",
       "first_success": "2025-12-22T14:32:55.988654",
-      "last_success": "2026-01-16T18:36:59.631028",
+      "last_success": "2026-09-13T12:36:27.439757",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
@@ -172,8 +199,8 @@
       }
     },
     "Max's Taphouse": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:47:19.235864",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:48:08.425590",
       "status": "previously_failed_now_success",
       "first_success": "2026-01-16T18:47:33.913152",
       "last_success": "2026-01-16T18:47:33.913152",
@@ -189,24 +216,35 @@
       "star_rating": 5
     },
     "Red Emma's": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:37:01.798240",
-      "status": "scraping_failed",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:36:29.551927",
+      "status": "previously_failed_now_success",
       "first_success": "2025-12-22T14:34:23.360658",
-      "last_success": "2025-12-22T14:34:23.360658",
+      "last_success": "2026-09-13T12:36:44.301335",
       "failure_count": 1,
       "last_failure": "2026-01-16T18:37:39.815813",
       "failure_reasons": [
         "Inspection data extraction failed"
       ],
-      "notes": []
+      "notes": [
+        "Status changed from 'scraping_failed' to 'success' at 2026-09-13T12:36:44.301335"
+      ],
+      "violations_count": 1,
+      "star_rating": 4,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 0,
+        "MODERATE": 1,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
     },
     "Golden West Cafe": {
-      "search_count": 4,
-      "last_searched": "2026-01-16T18:47:36.038648",
-      "status": "previously_failed_now_success",
+      "search_count": 5,
+      "last_searched": "2026-09-13T12:48:09.436440",
+      "status": "successfully_scraped",
       "first_success": "2026-01-16T18:47:50.821019",
-      "last_success": "2026-01-16T18:47:50.821019",
+      "last_success": "2026-09-13T12:48:24.148415",
       "failure_count": 3,
       "last_failure": "2025-12-31T13:01:10.794975",
       "failure_reasons": [
@@ -215,6 +253,153 @@
       "notes": [
         "Status changed from 'not_found' to 'success' at 2026-01-16T18:47:50.821019"
       ],
+      "violations_count": 2,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 1,
+        "MAJOR": 0,
+        "MODERATE": 1,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Cafe Hon": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:44:13.978553",
+      "status": "not_found",
+      "first_success": null,
+      "last_success": null,
+      "failure_count": 3,
+      "last_failure": "2026-09-13T12:44:23.036922",
+      "failure_reasons": [
+        "No restaurant found in portal"
+      ],
+      "notes": []
+    },
+    "Grano Pasta Bar": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:36:46.412329",
+      "status": "successfully_scraped",
+      "first_success": "2025-12-22T14:35:31.323474",
+      "last_success": "2026-09-13T12:37:01.322491",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 2,
+      "star_rating": 4,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 0,
+        "MODERATE": 1,
+        "MINOR": 1,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Pete's Grille": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:37:03.514651",
+      "status": "not_found",
+      "first_success": "2025-12-22T14:35:48.522568",
+      "last_success": "2025-12-22T14:35:48.522568",
+      "failure_count": 1,
+      "last_failure": "2026-09-13T12:37:12.440087",
+      "failure_reasons": [
+        "No restaurant found in portal"
+      ],
+      "notes": []
+    },
+    "Matsuri": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:37:13.446477",
+      "status": "previously_failed_now_success",
+      "first_success": "2025-12-22T14:36:36.276497",
+      "last_success": "2026-09-13T12:37:28.142794",
+      "failure_count": 1,
+      "last_failure": "2026-01-16T18:38:44.111149",
+      "failure_reasons": [
+        "Page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://baltimoreportal.jadian.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "notes": [
+        "Status changed from 'scraping_failed' to 'success' at 2026-09-13T12:37:28.142794"
+      ],
+      "violations_count": 6,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 1,
+        "MODERATE": 3,
+        "MINOR": 2,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Abbey Burger Bistro": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:37:30.253663",
+      "status": "not_found",
+      "first_success": "2025-12-22T14:36:53.468835",
+      "last_success": "2025-12-22T14:36:53.468835",
+      "failure_count": 1,
+      "last_failure": "2026-09-13T12:37:39.192231",
+      "failure_reasons": [
+        "No restaurant found in portal"
+      ],
+      "notes": []
+    },
+    "Wiley Gunters": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:37:40.198490",
+      "status": "successfully_scraped",
+      "first_success": "2025-12-22T14:37:10.672219",
+      "last_success": "2026-09-13T12:37:54.886139",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 3,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 1,
+        "MAJOR": 0,
+        "MODERATE": 2,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Vaccaro's Italian Pastry Shop": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:37:57.002197",
+      "status": "previously_failed_now_success",
+      "first_success": "2025-12-22T14:37:28.122930",
+      "last_success": "2026-09-13T12:38:11.789657",
+      "failure_count": 1,
+      "last_failure": "2026-01-16T18:39:21.526599",
+      "failure_reasons": [
+        "Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://baltimoreportal.jadian.com/\nCall log:\n  - navigating to \"https://baltimoreportal.jadian.com/\", waiting until \"domcontentloaded\"\n"
+      ],
+      "notes": [
+        "Status changed from 'scraping_failed' to 'success' at 2026-09-13T12:38:11.789657"
+      ],
+      "violations_count": 1,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 1,
+        "MAJOR": 0,
+        "MODERATE": 0,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "La Tavola": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:38:13.901501",
+      "status": "successfully_scraped",
+      "first_success": "2025-12-22T14:37:45.283081",
+      "last_success": "2026-09-13T12:38:28.598437",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
       "violations_count": 3,
       "star_rating": 3,
       "severity_breakdown": {
@@ -225,106 +410,52 @@
         "UNKNOWN_MODERATE": 0
       }
     },
-    "Cafe Hon": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:43:34.432408",
-      "status": "not_found",
-      "first_success": null,
-      "last_success": null,
-      "failure_count": 2,
-      "last_failure": "2026-01-16T18:43:43.324007",
-      "failure_reasons": [
-        "No restaurant found in portal"
-      ],
-      "notes": []
-    },
-    "Grano Pasta Bar": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:37:42.095994",
-      "status": "successfully_scraped",
-      "first_success": "2025-12-22T14:35:31.323474",
-      "last_success": "2025-12-22T14:35:31.323474",
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "Pete's Grille": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:37:43.100319",
-      "status": "successfully_scraped",
-      "first_success": "2025-12-22T14:35:48.522568",
-      "last_success": "2025-12-22T14:35:48.522568",
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "Matsuri": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:37:44.106061",
-      "status": "scraping_failed",
-      "first_success": "2025-12-22T14:36:36.276497",
-      "last_success": "2025-12-22T14:36:36.276497",
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:38:44.111149",
-      "failure_reasons": [
-        "Page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://baltimoreportal.jadian.com/\", waiting until \"domcontentloaded\"\n"
-      ],
-      "notes": []
-    },
-    "Abbey Burger Bistro": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:38:45.117319",
-      "status": "successfully_scraped",
-      "first_success": "2025-12-22T14:36:53.468835",
-      "last_success": "2025-12-22T14:36:53.468835",
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "Wiley Gunters": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:38:46.123028",
-      "status": "successfully_scraped",
-      "first_success": "2025-12-22T14:37:10.672219",
-      "last_success": "2025-12-22T14:37:10.672219",
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "Vaccaro's Italian Pastry Shop": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:38:47.128773",
-      "status": "scraping_failed",
-      "first_success": "2025-12-22T14:37:28.122930",
-      "last_success": "2025-12-22T14:37:28.122930",
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:39:21.526599",
-      "failure_reasons": [
-        "Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://baltimoreportal.jadian.com/\nCall log:\n  - navigating to \"https://baltimoreportal.jadian.com/\", waiting until \"domcontentloaded\"\n"
-      ],
-      "notes": []
-    },
-    "La Tavola": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:39:22.532356",
-      "status": "successfully_scraped",
-      "first_success": "2025-12-22T14:37:45.283081",
-      "last_success": "2025-12-22T14:37:45.283081",
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
     "Amicci's": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:39:23.538136",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:38:30.707488",
       "status": "successfully_scraped",
       "first_success": "2025-12-22T14:38:02.464819",
-      "last_success": "2026-01-16T18:39:39.284305",
+      "last_success": "2026-09-13T12:38:45.380020",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 6,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 2,
+        "MAJOR": 2,
+        "MODERATE": 2,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Charleston": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:38:47.496960",
+      "status": "successfully_scraped",
+      "first_success": "2025-12-22T14:38:20.020721",
+      "last_success": "2026-09-13T12:39:02.231888",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 5,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 1,
+        "MAJOR": 2,
+        "MODERATE": 2,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Azumi": {
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:39:04.438533",
+      "status": "successfully_scraped",
+      "first_success": "2025-12-22T14:38:38.113846",
+      "last_success": "2026-09-13T12:39:19.108638",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
@@ -339,53 +470,42 @@
         "UNKNOWN_MODERATE": 0
       }
     },
-    "Charleston": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:39:41.403184",
-      "status": "successfully_scraped",
-      "first_success": "2025-12-22T14:38:20.020721",
-      "last_success": "2025-12-22T14:38:20.020721",
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "Azumi": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:39:42.408974",
-      "status": "successfully_scraped",
-      "first_success": "2025-12-22T14:38:38.113846",
-      "last_success": "2025-12-22T14:38:38.113846",
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
     "The Rusty Scupper": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:47:52.969230",
-      "status": "not_found",
-      "first_success": null,
-      "last_success": null,
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:48:26.269863",
+      "status": "previously_failed_now_success",
+      "first_success": "2026-09-13T12:48:41.141203",
+      "last_success": "2026-09-13T12:48:41.141203",
       "failure_count": 1,
       "last_failure": "2025-12-22T14:38:49.389624",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
-      "notes": []
+      "notes": [
+        "Status changed from 'not_found' to 'success' at 2026-09-13T12:48:41.141203"
+      ],
+      "violations_count": 1,
+      "star_rating": 5,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 0,
+        "MODERATE": 0,
+        "MINOR": 1,
+        "UNKNOWN_MODERATE": 0
+      }
     },
     "Iron Rooster": {
-      "search_count": 2,
-      "last_searched": "2026-01-16T18:39:43.414778",
+      "search_count": 3,
+      "last_searched": "2026-09-13T12:39:21.413082",
       "status": "successfully_scraped",
       "first_success": "2025-12-22T14:39:35.875490",
-      "last_success": "2026-01-16T18:39:58.039161",
+      "last_success": "2026-09-13T12:39:36.188728",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
       "notes": [],
-      "violations_count": 4,
-      "star_rating": 1,
+      "violations_count": 0,
+      "star_rating": 5,
       "severity_breakdown": {
         "SEVERE": 1,
         "MAJOR": 2,
@@ -395,70 +515,70 @@
       }
     },
     "Phillips Seafood": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:40:00.152316",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:39:38.301887",
       "status": "successfully_scraped",
       "first_success": "2026-01-16T18:40:14.805253",
-      "last_success": "2026-01-16T18:40:14.805253",
+      "last_success": "2026-09-13T12:39:53.012382",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
       "notes": [],
-      "violations_count": 4,
+      "violations_count": 1,
       "star_rating": 1,
       "severity_breakdown": {
         "SEVERE": 1,
-        "MAJOR": 1,
-        "MODERATE": 1,
+        "MAJOR": 0,
+        "MODERATE": 0,
         "MINOR": 0,
-        "UNKNOWN_MODERATE": 1
+        "UNKNOWN_MODERATE": 0
       }
     },
     "McCormick & Schmick's": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:40:16.919698",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:39:55.122319",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:40:25.778674",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:40:04.082722",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Hard Rock Cafe Baltimore": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:40:26.784497",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:40:05.089110",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:40:35.647970",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:40:14.025387",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "The Horse You Came In On Saloon": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:40:36.653564",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:40:15.030885",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:40:45.574239",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:40:24.097752",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Sl\u00e1inte Irish Pub": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:40:46.579986",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:40:25.108586",
       "status": "successfully_scraped",
       "first_success": "2026-01-16T18:41:01.286814",
-      "last_success": "2026-01-16T18:41:01.286814",
+      "last_success": "2026-09-13T12:40:39.882232",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
@@ -474,61 +594,70 @@
       }
     },
     "Barcocina": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:41:03.495654",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:40:42.009153",
+      "status": "successfully_scraped",
+      "first_success": "2026-09-13T12:40:56.722068",
+      "last_success": "2026-09-13T12:40:56.722068",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
-      "notes": []
+      "notes": [],
+      "violations_count": 3,
+      "star_rating": 3,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 1,
+        "MODERATE": 2,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
     },
     "Di Pasquale's": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:41:04.501128",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:40:58.841193",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:41:13.375711",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:41:07.782193",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Of Love and Regret": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:41:14.386585",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:41:08.790934",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:41:23.318690",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:41:17.723593",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Sabatino's": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:41:24.329593",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:41:18.734518",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:41:33.272570",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:41:27.832823",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Chiapparelli's": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:41:34.283594",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:41:28.844274",
       "status": "successfully_scraped",
       "first_success": "2026-01-16T18:41:49.002369",
-      "last_success": "2026-01-16T18:41:49.002369",
+      "last_success": "2026-09-13T12:41:43.628145",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
@@ -540,54 +669,55 @@
         "MAJOR": 1,
         "MODERATE": 1,
         "MINOR": 0,
-        "UNKNOWN_MODERATE": 1
+        "UNKNOWN_MODERATE": 0
       }
     },
     "Aldo's": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:41:51.210737",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:41:45.749073",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:42:00.072069",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:41:54.722905",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Ciao Bella": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:42:01.082865",
-      "status": "not_found",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:41:55.733633",
+      "status": "scraping_failed",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:42:10.021303",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:42:07.854059",
       "failure_reasons": [
-        "No restaurant found in portal"
+        "No restaurant found in portal",
+        "Inspection data extraction failed"
       ],
       "notes": []
     },
     "Ryleigh's Oyster": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:42:11.032175",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:42:09.926273",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:42:20.008840",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:42:18.922364",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Cross Street Market": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:42:21.019687",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:42:19.933781",
       "status": "successfully_scraped",
       "first_success": "2026-01-16T18:42:35.813607",
-      "last_success": "2026-01-16T18:42:35.813607",
+      "last_success": "2026-09-13T12:42:35.085793",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
@@ -603,14 +733,16 @@
       }
     },
     "The Capital Grille": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:42:37.931494",
-      "status": "successfully_scraped",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:42:37.291775",
+      "status": "scraping_failed",
       "first_success": "2026-01-16T18:42:52.631533",
       "last_success": "2026-01-16T18:42:52.631533",
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
+      "failure_count": 1,
+      "last_failure": "2026-09-13T12:42:49.783057",
+      "failure_reasons": [
+        "Inspection data extraction failed"
+      ],
       "notes": [],
       "violations_count": 3,
       "star_rating": 3,
@@ -623,199 +755,241 @@
       }
     },
     "Roy's Restaurant": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:42:54.758446",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:42:51.859120",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:43:03.588363",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:43:01.295743",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Ouzo Bay": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:43:04.599192",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "Cinghiale": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:43:05.609996",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "The Brewer's Art": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:43:06.620835",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "Dooby's": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:43:07.631619",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:43:02.306552",
       "status": "successfully_scraped",
-      "first_success": "2026-01-16T18:43:22.406237",
-      "last_success": "2026-01-16T18:43:22.406237",
+      "first_success": "2026-09-13T12:43:17.363445",
+      "last_success": "2026-09-13T12:43:17.363445",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
       "notes": [],
-      "violations_count": 3,
-      "star_rating": 1,
+      "violations_count": 4,
+      "star_rating": 2,
       "severity_breakdown": {
-        "SEVERE": 2,
+        "SEVERE": 0,
+        "MAJOR": 1,
+        "MODERATE": 2,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Cinghiale": {
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:43:19.490114",
+      "status": "successfully_scraped",
+      "first_success": "2026-09-13T12:43:34.781844",
+      "last_success": "2026-09-13T12:43:34.781844",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 2,
+      "star_rating": 4,
+      "severity_breakdown": {
+        "SEVERE": 0,
         "MAJOR": 0,
         "MODERATE": 1,
+        "MINOR": 1,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "The Brewer's Art": {
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:43:36.900111",
+      "status": "not_found",
+      "first_success": null,
+      "last_success": null,
+      "failure_count": 1,
+      "last_failure": "2026-09-13T12:43:45.962792",
+      "failure_reasons": [
+        "No restaurant found in portal"
+      ],
+      "notes": []
+    },
+    "Dooby's": {
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:43:46.965016",
+      "status": "successfully_scraped",
+      "first_success": "2026-01-16T18:43:22.406237",
+      "last_success": "2026-09-13T12:44:01.903336",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 1,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 1,
+        "MAJOR": 0,
+        "MODERATE": 0,
         "MINOR": 0,
         "UNKNOWN_MODERATE": 0
       }
     },
     "Joe Squared": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:43:24.534091",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:44:04.028699",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:43:33.421528",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:44:12.970626",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Dylan's Oyster Cellar": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:43:44.334813",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "The Wine Source": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:43:45.345184",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "R House": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:43:46.346925",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:44:24.047915",
       "status": "successfully_scraped",
-      "first_success": "2026-01-16T18:44:01.632840",
-      "last_success": "2026-01-16T18:44:01.632840",
+      "first_success": "2026-09-13T12:44:38.799251",
+      "last_success": "2026-09-13T12:44:38.799251",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
       "notes": [],
-      "violations_count": 2,
-      "star_rating": 3,
+      "violations_count": 4,
+      "star_rating": 1,
       "severity_breakdown": {
-        "SEVERE": 0,
-        "MAJOR": 1,
+        "SEVERE": 1,
+        "MAJOR": 0,
         "MODERATE": 1,
         "MINOR": 0,
         "UNKNOWN_MODERATE": 0
       }
     },
-    "Sophomore Coffee": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:44:03.739759",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
+    "The Wine Source": {
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:44:40.919805",
+      "status": "successfully_scraped",
+      "first_success": "2026-09-13T12:44:55.774267",
+      "last_success": "2026-09-13T12:44:55.774267",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
-      "notes": []
+      "notes": [],
+      "violations_count": 1,
+      "star_rating": 3,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 1,
+        "MODERATE": 0,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "R House": {
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:44:57.897442",
+      "status": "successfully_scraped",
+      "first_success": "2026-01-16T18:44:01.632840",
+      "last_success": "2026-09-13T12:45:13.207311",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 2,
+      "star_rating": 4,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 0,
+        "MODERATE": 2,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Sophomore Coffee": {
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:45:15.326414",
+      "status": "successfully_scraped",
+      "first_success": "2026-09-13T12:45:30.484691",
+      "last_success": "2026-09-13T12:45:30.484691",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 0,
+      "star_rating": 5
     },
     "Medieval Times": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:44:04.746254",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:45:32.605033",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:44:13.701624",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:45:42.111457",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Tir Na Nog Irish Bar": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:44:14.712450",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:45:43.122799",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:44:23.661708",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:45:52.059884",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Nick's Fish House": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:44:24.672630",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "Bluegrass Tavern": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:44:25.683393",
-      "status": "not_found",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:45:53.070956",
+      "status": "scraping_failed",
       "first_success": null,
       "last_success": null,
       "failure_count": 1,
-      "last_failure": "2026-01-16T18:44:34.620906",
+      "last_failure": "2026-09-13T12:46:05.768611",
+      "failure_reasons": [
+        "Inspection data extraction failed"
+      ],
+      "notes": []
+    },
+    "Bluegrass Tavern": {
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:46:07.842397",
+      "status": "not_found",
+      "first_success": null,
+      "last_success": null,
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:46:17.113599",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Chipotle Mexican Grill": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:44:35.631734",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:46:18.120209",
       "status": "successfully_scraped",
       "first_success": "2026-01-16T18:44:50.996991",
-      "last_success": "2026-01-16T18:44:50.996991",
+      "last_success": "2026-09-13T12:46:34.159400",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
       "notes": [],
-      "violations_count": 2,
-      "star_rating": 3,
+      "violations_count": 0,
+      "star_rating": 5,
       "severity_breakdown": {
         "SEVERE": 0,
         "MAJOR": 1,
@@ -825,108 +999,112 @@
       }
     },
     "The Cheesecake Factory": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:44:53.144799",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
-      "failure_count": 0,
-      "last_failure": null,
-      "failure_reasons": [],
-      "notes": []
-    },
-    "P.F. Chang's": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:44:54.155635",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:46:36.361092",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
       "failure_count": 1,
-      "last_failure": "2026-01-16T18:45:03.024940",
+      "last_failure": "2026-09-13T12:46:45.321083",
+      "failure_reasons": [
+        "No restaurant found in portal"
+      ],
+      "notes": []
+    },
+    "P.F. Chang's": {
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:46:46.332169",
+      "status": "not_found",
+      "first_success": null,
+      "last_success": null,
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:46:55.419021",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Papermoon Diner": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:45:04.035796",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:46:56.430031",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:45:13.000065",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:47:05.410727",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Hersh's Pizza": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:45:14.011004",
-      "status": "unknown",
-      "first_success": null,
-      "last_success": null,
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:47:06.421780",
+      "status": "successfully_scraped",
+      "first_success": "2026-09-13T12:47:21.135458",
+      "last_success": "2026-09-13T12:47:21.135458",
       "failure_count": 0,
       "last_failure": null,
       "failure_reasons": [],
-      "notes": []
+      "notes": [],
+      "violations_count": 0,
+      "star_rating": 5
     },
     "Matthew's Pizza": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:45:15.015447",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:47:23.259087",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:45:23.960394",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:47:32.323746",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "G&M Restaurant": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:45:24.966062",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:47:33.334708",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:45:33.950544",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:47:42.451285",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Bo Brooks": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:45:34.961403",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:47:43.459165",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:45:43.887834",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:47:52.420205",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Canton Dockside": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:45:44.898694",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:47:53.431154",
       "status": "not_found",
       "first_success": null,
       "last_success": null,
-      "failure_count": 1,
-      "last_failure": "2026-01-16T18:45:53.826838",
+      "failure_count": 2,
+      "last_failure": "2026-09-13T12:48:02.370660",
       "failure_reasons": [
         "No restaurant found in portal"
       ],
       "notes": []
     },
     "Blue Moon Cafe": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:46:45.530906",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:48:06.410669",
       "status": "successfully_scraped",
       "first_success": "2026-01-16T18:47:00.328401",
       "last_success": "2026-01-16T18:47:00.328401",
@@ -945,8 +1123,8 @@
       }
     },
     "Captain James": {
-      "search_count": 1,
-      "last_searched": "2026-01-16T18:47:02.447043",
+      "search_count": 2,
+      "last_searched": "2026-09-13T12:48:07.414944",
       "status": "successfully_scraped",
       "first_success": "2026-01-16T18:47:17.114929",
       "last_success": "2026-01-16T18:47:17.114929",
@@ -962,6 +1140,46 @@
         "MODERATE": 1,
         "MINOR": 0,
         "UNKNOWN_MODERATE": 1
+      }
+    },
+    "Bayside Cantina": {
+      "search_count": 1,
+      "last_searched": "2026-09-13T12:48:43.289074",
+      "status": "successfully_scraped",
+      "first_success": "2026-09-13T12:48:58.680426",
+      "last_success": "2026-09-13T12:48:58.680426",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 1,
+      "star_rating": 1,
+      "severity_breakdown": {
+        "SEVERE": 1,
+        "MAJOR": 0,
+        "MODERATE": 0,
+        "MINOR": 0,
+        "UNKNOWN_MODERATE": 0
+      }
+    },
+    "Carlos O'Charlies": {
+      "search_count": 1,
+      "last_searched": "2026-09-13T12:49:00.789353",
+      "status": "successfully_scraped",
+      "first_success": "2026-09-13T12:49:15.761701",
+      "last_success": "2026-09-13T12:49:15.761701",
+      "failure_count": 0,
+      "last_failure": null,
+      "failure_reasons": [],
+      "notes": [],
+      "violations_count": 1,
+      "star_rating": 5,
+      "severity_breakdown": {
+        "SEVERE": 0,
+        "MAJOR": 0,
+        "MODERATE": 0,
+        "MINOR": 1,
+        "UNKNOWN_MODERATE": 0
       }
     }
   },
